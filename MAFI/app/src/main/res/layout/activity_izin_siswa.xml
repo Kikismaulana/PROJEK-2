@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgcolor"
+    tools:context="com.example.noufalibrahim.m_afi.IzinSiswa">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="Izin Siswa"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="39dp" />
+
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView6"
+            android:layout_marginTop="95dp"
+            android:layout_toStartOf="@+id/textView6"
+            android:text="Izin" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/radioButton"
+            android:layout_alignBottom="@+id/radioButton"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="91dp"
+            android:text="Sakit" />
+
+
+        <Button
+            android:id="@+id/btnCancelIzinSiswa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btnSubmitIzinSiswa"
+            android:layout_alignBottom="@+id/btnSubmitIzinSiswa"
+            android:layout_alignEnd="@+id/radioButton2"
+            android:onClick="back"
+            android:text="CANCEL"
+            tools:ignore="OnClick" />
+
+        <Button
+            android:id="@+id/btnSubmitIzinSiswa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/radioButton"
+            android:layout_marginBottom="32dp"
+            android:text="SUBMIT" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp"
+            android:ems="10"
+            android:hint="Keterangan"
+            android:inputType="textPersonName"
+            android:selectAllOnFocus="false"
+            android:singleLine="false"
+            android:textAlignment="viewStart" />
+
+        <Button
+            android:id="@+id/btnTglMulai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:text="Tampilkan tanggal" />
+
+        <Button
+            android:id="@+id/btnTglBerakhir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btnTglMulai"
+            android:layout_below="@+id/btnTglMulai"
+            android:layout_marginTop="23dp"
+            android:text="Tampilkan tanggal" />
+
+        <TextView
+            android:id="@+id/tvTglMulai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnTglMulai"
+            android:layout_centerHorizontal="true"
+            android:text="Tanggal Mulai" />
+
+        <TextView
+            android:id="@+id/tvTglBerakhir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnTglBerakhir"
+            android:layout_centerHorizontal="true"
+            android:text="Tanggal Berakhir" />
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

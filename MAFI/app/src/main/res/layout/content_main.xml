@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgcolor"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.noufalibrahim.m_afi.MainActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:showIn="@layout/app_bar_main">
+
+    <TextView
+        android:id="@+id/tvNIS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvNamaSiswa"
+        android:layout_alignBottom="@+id/tvNamaSiswa"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
+        android:text="@string/_1603080"
+        tools:ignore="MissingConstraints,RelativeOverlap"
+        tools:layout_editor_absoluteX="300dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/tvNamaSiswa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvNama"
+        android:layout_alignBottom="@+id/tvNama"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/tvNama"
+        android:text="@string/noufal_ibrahim"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/tvNama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="18dp"
+        android:orientation="vertical"
+        android:text="@string/nama"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/tvKelas"
+        android:layout_width="47dp"
+        android:layout_height="16dp"
+        android:layout_alignBottom="@+id/tvKelasSiswa"
+        android:layout_alignStart="@+id/tvNama"
+        android:text="@string/kelas"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="35dp" />
+
+    <TextView
+        android:id="@+id/tvKelasSiswa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvNamaSiswa"
+        android:layout_below="@+id/tvNamaSiswa"
+        android:text="@string/d3ti2c" />
+
+    <ImageView
+        android:id="@+id/ivMasuk"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvKelasSiswa"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        app:srcCompat="@drawable/bgputih"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ivPulang"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_below="@+id/ivMasuk"
+        android:layout_marginTop="23dp"
+        app:srcCompat="@drawable/bgputih"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvMasuk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivMasuk"
+        android:layout_centerHorizontal="true"
+        android:text="@string/masuk"
+        android:textAppearance="@style/TextAppearance.AppCompat" />
+
+    <TextView
+        android:id="@+id/tvPulang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivPulang"
+        android:layout_centerHorizontal="true"
+        android:text="@string/pulang"
+        android:textAppearance="@style/TextAppearance.AppCompat" />
+
+    <TextView
+        android:id="@+id/tvKetPresensi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMasuk"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:text="@string/_06_48"
+        android:textAlignment="center"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvKetPresensi"
+        android:layout_below="@+id/tvPulang"
+        android:layout_marginTop="43dp"
+        android:text="@string/_15_20"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ivPulang"
+        android:layout_alignStart="@+id/ivMasuk"
+        android:fontFamily="casual"
+        android:text="@string/tepat_waktu"
+        android:textColor="#12dd16" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivPulang"
+        android:layout_alignStart="@+id/ivPulang"
+        android:fontFamily="casual"
+        android:text="@string/pulang_lebih_cepat"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvMasuk"
+        android:layout_toEndOf="@+id/tvKelasSiswa"
+        android:text="@string/_09_03_2018"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btnIzinSiswa"
+        style="@android:style/Widget.Material.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_below="@+id/ivPulang"
+        android:fontFamily="sans-serif"
+        android:onClick="pindah"
+        android:text="Izin Siswa"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:typeface="serif" />
+
+
+</RelativeLayout>
