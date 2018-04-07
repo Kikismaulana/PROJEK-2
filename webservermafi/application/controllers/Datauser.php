@@ -24,14 +24,45 @@ class Datauser extends CI_Controller {
 
 	public function readuserortu()
 	{
+		$this->load->model('MUser');
+		$tampildata['data'] = $this->MUser->readuserortu()->result_array();
 		$this->load->view('admin/header');
-		$this->load->view('admin/userortu');
+		$this->load->view('admin/userortu', $tampildata);
 		$this->load->view('admin/footer');
 	}
 
-	public function creat()
+	public function createuserortu()
 	{
-
+		$this->load->model('MUser');
+		$NISN = $this->input->POST('nisn');
+		$NIS = $this->input->POST('nis');
+		$password = $this->input->POST('password');
+		$level = $this->input->POST('level');
+		$data = array (
+			'nisn' => $NISN,
+			'nis' => $NIS,
+			'password' => $password,
+			'level' => $level
+		);
+		if ($this->MUser->createuserortu($data))
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
+                        Data berhasil ditambahkan!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		else
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Data gagal ditambahkan!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		return redirect('Datauser/readuserortu');
 	}
 
 	public function update()

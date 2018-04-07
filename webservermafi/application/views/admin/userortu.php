@@ -28,13 +28,18 @@
                     <div class="form-group row">
 
                       <div class="col-sm-12 form-group container-fluid" style="padding-bottom: 20px">
+                        <!-- Notifikasi -->
+                        <?php if ($info = $this->session->flashdata('info')) {
+                          echo $info;
+                        } ?>
+                        <!-- /Notifikasi -->
                         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success"> Tambah data</button>
                       </div>
 
                       <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th width="5%">No</th>
                                 <th>NISN</th>
                                 <th>NIS</th>
                                 <th>Nama</th>
@@ -43,18 +48,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                              $no = 1;
+                              foreach ($data as $row) {
+                            ?>
                             <tr>
-                                <td>s</td>
-                                <td>s</td>
-                                <td>s</td>
-                                <td>s</td>
-                                <td>s</td>
+                                <td align="center"><?php echo $no++; ?>.</td>
+                                <td align="center"><?php echo $row['nisn']; ?></td>
+                                <td align="center"><?php echo $row['nis']; ?></td>
+                                <td><?php echo $row['nama_ayah']; echo " / "; echo $row['nama_ibu']; ?></td>
+                                <td align="center"><?php echo $row['password']; ?></td>
                                 <td align="center">
                                   <button class="btn btn-sm btn-info">Details</button>
                                   <button class="btn btn-sm btn-success">Update</button>
                                   <button class="btn btn-sm btn-danger">Delete</button>
                                 </td>
                             </tr>
+                            <?php } ?>
                         </tbody>
                       </table>
 
@@ -73,34 +83,31 @@
                     <div role="document" class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 id="exampleModalLabel" class="modal-title">User siswa</h5>
+                          <h5 id="exampleModalLabel" class="modal-title">User Orang Tua</h5>
                           <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                         </div>
-                        <div class="modal-body">
-                          <p>Tambah User Siswa</p>
-                                  <form>
-
-                                    <div class="form-group">
-                                      <label>NISN</label>
-                                      <input type="nip" placeholder="Nip" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">       
-                                      <label>NIS</label>
-                                      <input type="nama" placeholder="Nama" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">       
-                                      <label>Password</label>
-                                      <input type="password" placeholder="password" class="form-control">
-                                    </div>
-
-                                  </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        <form method="POST" action="<?php echo base_url('Datauser/createuserortu') ?>">
+                          <div class="modal-body">
+                            <p>Tambah User Orang tua</p>
+                            <input type="hidden" name="level" value="ortu">
+                            <div class="form-group">
+                              <label>NISN</label>
+                              <input type="text" name="nisn" placeholder="NISN" class="form-control" required="">
+                            </div>
+                            <div class="form-group">       
+                            <label>NIS</label>
+                              <input type="text" name="nis" placeholder="NIS" class="form-control" required="">
+                            </div>
+                            <div class="form-group">       
+                              <label>Password</label>
+                              <input type="password" name="password" placeholder="password" class="form-control" required="">
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>

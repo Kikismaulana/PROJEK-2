@@ -6,7 +6,8 @@ class MJurusan extends CI_Model {
 	public $tabel = 'jurusan';
 
 	//Harus ada
-	function __construct(){
+	function __construct()
+	{
 		parent::__construct();
 	}
 

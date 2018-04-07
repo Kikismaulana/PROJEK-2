@@ -31,10 +31,9 @@
                         <label class="col-sm-12 form-control-label">Pilih Kelas</label>
                         <div class="col-sm-12">
                           <select name="account" class="form-control">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
+                            <?php foreach ($datakelas as $row) { ?>
+                            <option><?php echo $row['nama_kelas']; ?></option>
+                            <?php } ?>
                           </select>
                         </div>
                       </div>
@@ -42,12 +41,6 @@
                       <div class="col-sm-3">
                         <div class="col-sm-12" style="padding-top: 30px">
                           <button class="btn btn-info col-sm-12">Lihat data</button>
-                        </div>
-                      </div>
-
-                      <div class="col-sm-3">
-                        <div class="col-sm-12" style="padding-top: 30px">
-                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary col-sm-12">Tambah data</button>
                         </div>
                       </div>
 
@@ -108,35 +101,50 @@
 
                 <!-- Conten value-->
                 <div class="card-body container-fluid">
-                  <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                      <thead>
-                          <tr>
-                              <th>No.</th>
-                              <th>NIS</th>
-                              <th>Nama lengkap</th>
-                              <th>Email</th>
-                              <th>Alamat</th>
-                              <th>Nomor Hp</th>
-                              <th>Aksi</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td>s</td>
-                              <td>s</td>
-                              <td>s</td>
-                              <td>s</td>
-                              <td>s</td>
-                              <td>s</td>
-                              <td align="center">
-                                <button class="btn btn-sm btn-info">Details</button>
-                                <button class="btn btn-sm btn-success">Update</button>
-                                <button class="btn btn-sm btn-danger">Delete</button>
-                              </td>
-                          </tr>
-                      </tbody>
-                    </table>
-                </div>
+                  <div class="form-group">
+                    <div class="form-group row">
+                      <div class="col-sm-12 form-group container-fluid" style="padding-bottom: 20px">
+                        <!-- Notifikasi -->
+                        <?php if ($info = $this->session->flashdata('info')) {
+                          echo $info;
+                        } ?>
+                        <!-- /Notifikasi -->
+                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Tambah data</button>
+                      </div>
+                      <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                          <thead>
+                              <tr>
+                                  <th width="5%">No.</th>
+                                  <th>NIS</th>
+                                  <th width="20%">Nama lengkap</th>
+                                  <th>Email</th>
+                                  <th>Nomor Hp</th>
+                                  <th width="40%">Aksi</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <?php
+                              $no = 1;
+                              foreach ($datasiswa as $row) {
+                            ?>
+                              <tr>
+                                  <td align="center"><?php echo $no++; ?></td>
+                                  <td align="center"><?php echo $row['nis']; ?></td>
+                                  <td><?php echo $row['nama_lengkap']; ?></td>
+                                  <td><?php echo $row['email']; ?></td>
+                                  <td><?php echo $row['no_hp']; ?></td>
+                                  <td align="center">
+                                    <button class="btn btn-sm btn-info">Details</button>
+                                    <button class="btn btn-sm btn-success">Update</button>
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                  </td>
+                              </tr>
+                            <?php } ?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 <!-- /Conten Header-->
 
               </div>
@@ -154,92 +162,107 @@
                           <h5 id="exampleModalLabel" class="modal-title">Tambah data siswa</h5>
                           <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                         </div>
-                        <div class="modal-body">
-                          <p>Tambah data siswa.</p>
-                            <form>
+                        <form method="POST" action="<?php echo base_url('Datasiswa/create'); ?>">
+                          <div class="modal-body">
+                            <p>Tambah data siswa.</p>
 
-                              <div class="form-group">       
-                                <label>Nama</label>
-                                <input type="text" placeholder="Nama" class="form-control">
-                              </div>
-
-                              <div class="form-group">
-                                <label>NIS</label>
-                                <input type="email" placeholder="NIS" class="form-control">
-                              </div>
-
-                              <label>Kelas</label>
-                                  <select name="account" class="form-control">
-                                    <option>option 1</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                  </select><br>
-
-                              <div class="form-group">       
-                                <label>Jenis Kelamin</label>
-                                <div class="radio-inline">
-                                  <label>
-                                     <input type="radio" name="optradio">Laki-laki
-                                  </label>
+                                <div class="form-group">       
+                                  <label>Nama</label>
+                                  <input type="text" name="nama" placeholder="Nama" class="form-control" required="">
                                 </div>
-                                <div class="radio-inline">
-                                  <label>
-                                     <input type="radio" name="optradio">Perempuan
-                                  </label>
+
+                                <div class="form-group">
+                                  <label>NIS</label>
+                                  <input type="text" name="nis" placeholder="NIS" class="form-control" required="">
                                 </div>
-                              </div>
 
-                              <div class="form-group">
-                                <label>Tempat, Tanggal Lahir</label>
-                                <input type="text" name="ttl" class="form-control">
-                              </div>
+                                <div class="form-group">
+                                  <label>Kelas</label>
+                                  <select name="id_kelas" class="form-control" required="" id="id_kelas">
+                                      <option class="active">--PILIH KELAS--</option>
+                                      <?php foreach ($datakelas as $row) { ?>
+                                      <option value="<?php echo $row['id_kelas']; ?>"> <?php echo $row['nama_kelas']; ?></option>
+                                      <?php } ?>
+                                  </select>
+                                </div>
 
-                              <div class="form-group">
-                                <label>Agama</label>
-                                <input type="text" name="agama" class="form-control">
-                              </div>
+                                <div class="form-group">       
+                                  <label>Jenis Kelamin</label>
+                                  <div class="radio-inline">
+                                    <label>
+                                       <input name="jk" type="radio" required="" value="Laki-Laki">Laki-laki
+                                    </label>
+                                  </div>
+                                  <div class="radio-inline">
+                                    <label>
+                                       <input name="jk" type="radio" required="" value="Perempuan">Perempuan
+                                    </label>
+                                  </div>
+                                </div>
 
-                              <div class="form-group">       
-                                <label>Alamat</label>
-                                <textarea class="form-control" placeholder="Alamat" name="alamat" rows="3"></textarea>
-                              </div>
-                          
-                              <div class="form-group">
-                                <label>No. Telep</label>
-                                <input type="text" class="form-control" placeholder="No Telepon" name="tlp">
-                              </div>
+                                <div class="form-group">
+                                  <label>Tempat, Tanggal Lahir</label>
+                                  <input type="text" placeholder="(kota), (tanggal,bulan,tahun)" name="ttl" class="form-control" required="">
+                                </div>
 
-                              <div class="form-group">       
-                                <label>Nama Ayah</label>
-                                <input type="password" placeholder="Nama Ayah" class="form-control">
-                              </div>
+                                <div class="form-group">
+                                  <label>Agama</label>
+                                  <select name="agama" class="form-control" required="">
+                                    <option>--PILIH AGAMA--</option>
+                                    <option value="ISLAM">ISLAM</option>
+                                    <option value="PROTESTAN">PROTESTAN</option>
+                                    <option value="KATOLIK">KATOLIK</option>
+                                    <option value="HINDU">HINDU</option>
+                                    <option value="BUDHA">BUDHA</option>
+                                    <option value="KONGHUCU">KONGHUCU</option>
+                                  </select>
+                                </div>
 
-                              <div class="form-group">       
-                                <label>Nama Ibu</label>
-                                <input type="nama" placeholder="Nama Ibu" class="form-control">
-                              </div>
+                                <div class="form-group">       
+                                  <label>Alamat</label>
+                                  <textarea class="form-control" name="alamat"></textarea>
+                                </div>
+                            
+                                <div class="form-group">
+                                  <label>No. Telep</label>
+                                  <input type="text" class="form-control" placeholder="No Telepon" name="tlp" required="">
+                                </div>
 
-                              <div class="form-group">       
-                                <label>Pekerjaan Ayah</label>
-                                <input type="pekerjaan" placeholder="Pekerjaan" class="form-control">
-                              </div>
+                                <div class="form-group">
+                                  <label>Email</label>
+                                  <input type="email" name="email" placeholder="email" class="form-control" required="">
+                                </div>
 
-                              <div class="form-group">       
-                                <label>Pekerjaan Ibu</label>
-                                <input type="pekerejaan" placeholder="Pekerjaan" class="form-control">
-                              </div>
+                                <div class="form-group">       
+                                  <label>Nama Ayah</label>
+                                  <input type="text" name="nama_ayah" placeholder="Nama Ayah" class="form-control" required="">
+                                </div>
 
-                              <div class="form-group">       
-                                <label>Alamat Orangtua</label>
-                                <textarea class="form-control" placeholder="Alamat" name="alamatortu" rows="3"></textarea>
-                              </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                                <div class="form-group">       
+                                  <label>Nama Ibu</label>
+                                  <input type="text" name="nama_ibu" placeholder="Nama Ibu" class="form-control" required="">
+                                </div>
+
+                                <div class="form-group">       
+                                  <label>Pekerjaan Ayah</label>
+                                  <input type="text" name="pekerjaan_ayah" placeholder="Pekerjaan" class="form-control" required="">
+                                </div>
+
+                                <div class="form-group">       
+                                  <label>Pekerjaan Ibu</label>
+                                  <input type="text" name="pekerjaan_ibu" placeholder="Pekerjaan" class="form-control" required="">
+                                </div>
+
+                                <div class="form-group">       
+                                  <label>Alamat Orangtua</label>
+                                  <textarea class="form-control" name="alamat_ortu"></textarea>
+                                </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>

@@ -6,6 +6,7 @@ if (!defined('BASEPATH')) {
 
 class Admin extends CI_Controller {
 
+    // HARUS ADA INI NIH
     public function __Construct() {
         parent::__Construct();
         $this->load->model("MLogin");

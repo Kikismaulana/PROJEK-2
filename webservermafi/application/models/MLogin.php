@@ -1,11 +1,5 @@
 <?php
 
-    /******************************************
-    *      Codeigniter 3 Simple Login         *
-    *   Developer  :  rudiliucs1@gmail.com    *
-    *        Copyright © 2017 Rudi Liu        *
-    *******************************************/
-
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -29,5 +23,3 @@ class MLogin extends CI_Model {
             return $query->result();
     }
 }
-
-/* End of file  */
