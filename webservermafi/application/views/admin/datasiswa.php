@@ -31,6 +31,7 @@
                         <label class="col-sm-12 form-control-label">Pilih Kelas</label>
                         <div class="col-sm-12">
                           <select name="account" class="form-control">
+                            <option>--PILIH KELAS--</option>
                             <?php foreach ($datakelas as $row) { ?>
                             <option><?php echo $row['nama_kelas']; ?></option>
                             <?php } ?>

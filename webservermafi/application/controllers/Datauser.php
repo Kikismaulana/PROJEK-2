@@ -44,7 +44,7 @@ class Datauser extends CI_Controller {
 			'password' => $password,
 			'level' => $level
 		);
-		if ($this->MUser->createuserortu($data))
+		if ($this->MUser->create($data))
 		{
 			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
                         Data berhasil ditambahkan!

@@ -53,18 +53,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                          <?php
+                            $no = 1;
+                            foreach ($data as $row) {
+                          ?>
                             <tr>
-                                <td>s</td>
-                                <td>s</td>
-                                <td>s</td>
-                                <td>s</td>
-                                <td>s</td>
+                                <td width="5%"><?php echo $no++; ?></td>
+                                <td><?php echo $row['nip']; ?></td>
+                                <td><?php echo $row['nama_lengkap']; ?></td>
+                                <td><?php echo $row['email']; ?></td>
+                                <td><?php echo $row['no_hp']; ?></td>
                                 <td align="center">
-                                  <button class="btn btn-sm btn-info">Details</button>
-                                  <button class="btn btn-sm btn-success">Update</button>
-                                  <button class="btn btn-sm btn-danger">Delete</button>
+                                  <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#modal_detail<?php echo $row['nip'];?>">Details</a>
+                                  <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_update<?php echo $row['nip'];?>">Update</button>
+                                  <a data-toggle="modal" data-target="#modal_konfirmasidelete<?php echo $row['nip'];?>"" class="btn btn-sm btn-danger text-white">Delete</a>
                                 </td>
                             </tr>
+                          <?php } ?>
                         </tbody>
                       </table>
 
@@ -78,7 +83,7 @@
           </div>
         </div>
       </section>
-
+                  <!-- ============ MODAL TAMBAH GURU =============== -->
                   <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
                     <div role="document" class="modal-dialog">
                       <div class="modal-content">
@@ -86,51 +91,205 @@
                           <h5 id="exampleModalLabel" class="modal-title">Tambah data guru</h5>
                           <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                         </div>
-                        <div class="modal-body">
-                                  <form>
-                                    <div class="form-group">
-                                      <label>NIP</label>
-                                      <input type="nip" placeholder="Nip" class="form-control">
-                                    </div>
-                                    <div class="form-group">       
-                                      <label>Nama</label>
-                                      <input type="nama" placeholder="Nama" class="form-control">
-                                    </div>
-                                    <div class="form-group">       
-                                      <label>Email</label>
-                                      <input type="email" placeholder="Nama" class="form-control">
-                                    </div>
-                                    <div class="form-group">       
-                                      <label>Password</label>
-                                      <input type="password" placeholder="password" class="form-control">
-                                    </div>
-                                    <div class="form-group">       
-                                      <label>Jenis Kelamin</label>
-                                      <div class="radio-inline">
-                                        <label>
-                                           <input type="radio" name="optradio">Laki-laki
-                                        </label>
-                                      </div>
-                                      <div class="radio-inline">
-                                        <label>
-                                           <input type="radio" name="optradio">Perempuan
-                                        </label>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">       
-                                      <label>No Hp.</label>
-                                      <input type="nama" placeholder="No Hp." class="form-control">
-                                    </div>
-                                    <div class="form-group">       
-                                      <label>Alamat</label>
-                                      <textarea class="form-control" placeholder="Alamat" name="alamat" rows="3"></textarea>
-                                    </div>
-                                  </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        <form method="POST" action="<?php echo base_url('Dataguru/create'); ?>">
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label>NIP</label>
+                              <input type="text" name="nip" placeholder="NIP" class="form-control">
+                            </div>
+                            <div class="form-group">       
+                              <label>Nama</label>
+                              <input type="text" name="nama" placeholder="Nama" class="form-control">
+                            </div>
+                            <div class="form-group">       
+                              <label>Email</label>
+                              <input type="email" name="email" placeholder="Email" class="form-control">
+                            </div>
+                            <div class="form-group">       
+                              <label>Password</label>
+                              <input type="password" name="password" placeholder="password" class="form-control">
+                            </div>
+                            <div class="form-group">       
+                              <label>Jenis Kelamin</label>
+                              <div class="radio-inline">
+                                <label>
+                                  <input type="radio" name="jk" value="Laki-laki">Laki-laki
+                                </label>
+                              </div>
+                              <div class="radio-inline">
+                                <label>
+                                  <input type="radio" name="jk" value="Perempuan">Perempuan
+                                </label>
+                              </div>
+                            </div>
+                            <div class="form-group">       
+                              <label>No Hp.</label>
+                              <input type="text" name="no_hp" placeholder="No Hp." class="form-control">
+                            </div>
+                            <div class="form-group">       
+                              <label>Alamat</label>
+                              <textarea class="form-control" name="alamat"></textarea>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
+                  <!-- ============ /MODAL TAMBAH GURU =============== -->
+
+                  <!-- ============ MODAL DETAIL GURU =============== -->
+                  <?php 
+                    foreach($data as $row) {
+                  ?>
+                  <div id="modal_detail<?php echo $row['nip'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                    <div role="document" class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 id="exampleModalLabel" class="modal-title">Tambah data guru</h5>
+                          <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                        </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label>NIP</label>
+                              <input type="text" name="nip" placeholder="NIP" class="form-control" value="<?php echo $row['nip'] ?>">
+                            </div>
+                            <div class="form-group">       
+                              <label>Nama</label>
+                              <input type="text" name="nama" placeholder="Nama" class="form-control" value="<?php echo $row['nama_lengkap'] ?>">
+                            </div>
+                            <div class="form-group">       
+                              <label>Email</label>
+                              <input type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $row['email'] ?>">
+                            </div>
+                            <div class="form-group">       
+                              <label>Password</label>
+                              <input type="text" name="password" placeholder="password" class="form-control" value="<?php echo $row['password'] ?>">
+                            </div>
+                            <div class="form-group">       
+                              <label>Jenis Kelamin</label>
+                              <div class="radio-inline">
+                                <label>
+                                  <input type="radio" name="jk" value="Laki-laki">Laki-laki
+                                </label>
+                              </div>
+                              <div class="radio-inline">
+                                <label>
+                                  <input type="radio" name="jk" value="Perempuan">Perempuan
+                                </label>
+                              </div>
+                            </div>
+                            <div class="form-group">       
+                              <label>No Hp.</label>
+                              <input type="text" name="no_hp" placeholder="No Hp." class="form-control" value="<?php echo $row['no_hp'] ?>">
+                            </div>
+                            <div class="form-group">       
+                              <label>Alamat</label>
+                              <textarea class="form-control" name="alamat"><?php echo $row['alamat'] ?></textarea>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <?php } ?>
+                  <!-- ============ / MODAL DETAIL GURU =============== -->
+
+                  <!-- ============ MODAL UPDATE GURU =============== -->
+                  <?php 
+                    foreach($data as $row) {
+                  ?>
+                  <div id="modal_update<?php echo $row['nip'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                    <div role="document" class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 id="exampleModalLabel" class="modal-title">Tambah data guru</h5>
+                          <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                        </div>
+                        <form method="POST" action="<?php echo base_url('Dataguru/update/'); ?><?php echo $row['nip'] ?>">
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label>NIP</label>
+                              <input type="text" required="" name="nip" placeholder="NIP" class="form-control" value="<?php echo $row['nip'] ?>">
+                            </div>
+                            <div class="form-group">       
+                              <label>Nama</label>
+                              <input type="text" required="" name="nama" placeholder="Nama" class="form-control" value="<?php echo $row['nama_lengkap'] ?>">
+                            </div>
+                            <div class="form-group">       
+                              <label>Email</label>
+                              <input type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $row['email'] ?>" required="">
+                            </div>
+                            <div class="form-group">       
+                              <label>Password</label>
+                              <input type="text" name="password" placeholder="password" class="form-control" value="<?php echo $row['password'] ?>" required="">
+                            </div>
+                            <div class="form-group">       
+                              <label>Jenis Kelamin</label>
+                              <div class="radio-inline">
+                                <label>
+                                  <input type="radio" name="jk" value="Laki-laki" required="">Laki-laki
+                                </label>
+                              </div>
+                              <div class="radio-inline">
+                                <label>
+                                  <input type="radio" name="jk" value="Perempuan" required="">Perempuan
+                                </label>
+                              </div>
+                            </div>
+                            <div class="form-group">       
+                              <label>No Hp.</label>
+                              <input type="text" name="no_hp" placeholder="No Hp." class="form-control" value="<?php echo $row['no_hp'] ?>" required="">
+                            </div>
+                            <div class="form-group">       
+                              <label>Alamat</label>
+                              <textarea class="form-control" name="alamat" required=""><?php echo $row['alamat'] ?></textarea>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <?php } ?>
+                  <!-- ============ / MODAL UPDATE GURU =============== -->
+
+                  <!-- ============ MODAL KONFIRMASI DELETE GURU =============== -->
+                  <?php 
+                  foreach($data as $row) {
+                  ?>
+                  <div class="modal fade" id="modal_konfirmasidelete<?php echo $row['nip'];?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+                      <div class="modal-dialog">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                          <h3 class="modal-title" id="myModalLabel">Delete Jurusan</h3>
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                      </div>
+                      <form class="form-horizontal" method="post" action="<?php echo base_url('Dataguru/delete/');?><?php echo $row['nip'] ?>">
+                          <div class="modal-body">
+
+                              <div class="form-group">
+                                  <label class="control-label col-xs-3" >Apakah anda yakin ingin menghapus data guru <b> <?php echo $row['nama_lengkap']; ?> ? </b></label>
+                              </div>
+
+                          </div>
+
+                          <div class="modal-footer">
+                              <button class="btn" data-dismiss="modal" aria-hidden="true">Batal</button>
+                              <button class="btn btn-danger"> Ya </button>
+                          </div>
+                      </form>
+                      </div>
+                      </div>
+                  </div>
+
+                  <?php }?>
+                <!--END MODAL KONFIRMASI DELETE GURU-->

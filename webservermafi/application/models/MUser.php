@@ -12,13 +12,13 @@ class MUser extends CI_Model {
 		parent::__construct();
 	}
 
-	public function createuserortu($data)
+	public function create($data)
 	{
 		return $this->db->insert($this->tabel, $data);
 	}
 
 	public function readuserortu()
 	{
-		return $this->db->get_where($this->v_ortu,'nisn != ');
+		return $this->db->get_where($this->v_ortu,'nisn != ' && 'level == ortu');
 	}
 }
