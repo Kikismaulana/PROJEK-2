@@ -87,7 +87,7 @@ FROM guru as guru
 LEFT JOIN users as users on users.nip=guru.nip;
 
 create view v_siswa as select users.nis, users.password, users.level,
-siswa.nama_lengkap, kelas.nama_kelas, siswa.jk, siswa.ttl, siswa.email, siswa.agama, siswa.alamat, siswa.no_hp, siswa.nama_ayah, siswa.nama_ibu, siswa.pekerjaan_ayah, siswa.pekerjaan_ibu
+siswa.nama_lengkap, kelas.id_kelas, kelas.nama_kelas, siswa.jk, siswa.ttl, siswa.email, siswa.agama, siswa.alamat, siswa.no_hp, siswa.nama_ayah, siswa.nama_ibu, siswa.pekerjaan_ayah, siswa.pekerjaan_ibu, siswa.alamat_ortu
 FROM siswa as siswa
 LEFT JOIN users as users on users.nis=siswa.nis
 LEFT JOIN kelas as kelas on kelas.id_kelas=siswa.id_kelas
@@ -98,8 +98,3 @@ izin.alasan, izin.tanggal_mulai, izin.tanggal_selesai, izin.bukti, izin.status
 FROM presensi as presensi
 LEFT JOIN izin as izin on izin.id_izin=presensi.id_izin
 LEFT JOIN siswa as siswa on siswa.NIS=presensi.NIS;
-
-alter table users alter column nis set default 0;
-alter table users alter column nisn set default 0;
-alter table users alter column nip set default 0;
-alter table users alter column admin set default 0;

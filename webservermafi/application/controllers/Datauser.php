@@ -12,8 +12,9 @@ class Datauser extends CI_Controller {
 	{
 		$this->load->model('MUser');
 		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
+		$tampildata['data'] = $this->MUser->readuserguru()->result_array();
 		$this->load->view('admin/header',$tampildata);
-		$this->load->view('admin/userguru');
+		$this->load->view('admin/userguru',$tampildata);
 		$this->load->view('admin/footer');
 	}
 
@@ -101,6 +102,38 @@ class Datauser extends CI_Controller {
                       </div>");
 		}
 		return redirect('Datauser/readusersiswa');
+	}
+
+	public function createuserguru()
+	{
+		$this->load->model('MUser');
+		$nip = $this->input->POST('nip');
+		$password = $this->input->POST('password');
+		$level = $this->input->POST('level');
+		$data = array (
+			'nip' => $nip,
+			'password' => $password,
+			'level' => $level
+		);
+		if ($this->MUser->create($data))
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
+                        Data berhasil ditambahkan!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		else
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Data gagal ditambahkan!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		return redirect('Datauser/readuserguru');
 	}
 
 	public function update()

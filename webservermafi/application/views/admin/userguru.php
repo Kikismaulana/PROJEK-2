@@ -42,17 +42,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                          <?php
+                            $no = 1;
+                            foreach ($data as $row) {
+                          ?>
                             <tr>
-                                <td>s</td>
-                                <td>s</td>
-                                <td>s</td>
-                                <td>s</td>
+                                <td><?php echo $no++; ?></td>
+                                <td><?php echo $row['nip']; ?></td>
+                                <td><?php echo $row['nama_lengkap']; ?></td>
+                                <td><?php echo $row['password']; ?></td>
                                 <td align="center">
                                   <button class="btn btn-sm btn-info">Details</button>
                                   <button class="btn btn-sm btn-success">Update</button>
                                   <button class="btn btn-sm btn-danger">Delete</button>
                                 </td>
                             </tr>
+                          <?php } ?>
                         </tbody>
                       </table>
 
@@ -74,25 +79,23 @@
                           <h5 id="exampleModalLabel" class="modal-title">Tambah data user guru</h5>
                           <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                         </div>
-                        <div class="modal-body">
-                                  <form>
-
-                                    <div class="form-group">
-                                      <label>NIP</label>
-                                      <input type="nip" placeholder="Nip" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">       
-                                      <label>Password</label>
-                                      <input type="password" placeholder="password" class="form-control">
-                                    </div>
-
-                                  </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        <form method="POST" action="<?php echo base_url('Datauser/createuserguru'); ?>">
+                          <div class="modal-body">
+                            <input type="hidden" name="level" value="guru">
+                            <div class="form-group">
+                              <label>NIP</label>
+                              <input type="text" name="nip" placeholder="Nip" class="form-control">
+                            </div>
+                            <div class="form-group">       
+                              <label>Password</label>
+                              <input type="password" name="password" placeholder="password" class="form-control">
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>

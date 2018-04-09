@@ -6,6 +6,7 @@ class MUser extends CI_Model {
 	public $tabel = 'users';
 	public $v_ortu = 'v_ortu';
 	public $v_siswa = 'v_siswa';
+	public $v_guru = 'v_guru';
 
 	// Harus ada
 	function __construct()
@@ -30,12 +31,20 @@ class MUser extends CI_Model {
 
 	public function readuserortu()
 	{
-		return $this->db->get_where($this->v_ortu,'nisn != ');
+		$levelortu = "ortu";
+		return $this->db->get($this->v_ortu,'level', $levelortu);
+	}
+
+	public function readuserguru()
+	{
+		$levelguru = "guru";
+		return $this->db->get($this->v_guru,'level', $levelguru);
 	}
 
 	public function readusersiswa()
 	{
-		return $this->db->get($this->v_siswa);
+		$levelsiswa = "siswa";
+		return $this->db->get($this->v_siswa,'level',$levelsiswa);
 	}
 
 	function updateadmin($data, $id_users)
