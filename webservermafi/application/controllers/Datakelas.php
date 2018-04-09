@@ -9,11 +9,13 @@ class Datakelas extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('MUser');
+		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
 		$this->load->model('Mkelas');
 		$tampildata['data'] = $this->Mkelas->read()->result_array();
 		$this->load->model('Mjurusan');
 		$tampildata['datajurusan'] = $this->Mjurusan->read()->result_array();
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$tampildata);
 		$this->load->view('admin/datakelas', $tampildata);
 		$this->load->view('admin/footer');
 	}

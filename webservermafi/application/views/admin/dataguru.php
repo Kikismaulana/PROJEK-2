@@ -58,11 +58,11 @@
                             foreach ($data as $row) {
                           ?>
                             <tr>
-                                <td width="5%"><?php echo $no++; ?></td>
-                                <td><?php echo $row['nip']; ?></td>
+                                <td width="5%" align="center"><?php echo $no++; ?></td>
+                                <td align="center"><?php echo $row['nip']; ?></td>
                                 <td><?php echo $row['nama_lengkap']; ?></td>
                                 <td><?php echo $row['email']; ?></td>
-                                <td><?php echo $row['no_hp']; ?></td>
+                                <td align="center"><?php echo $row['no_hp']; ?></td>
                                 <td align="center">
                                   <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#modal_detail<?php echo $row['nip'];?>">Details</a>
                                   <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_update<?php echo $row['nip'];?>">Update</button>
@@ -106,10 +106,6 @@
                               <input type="email" name="email" placeholder="Email" class="form-control">
                             </div>
                             <div class="form-group">       
-                              <label>Password</label>
-                              <input type="password" name="password" placeholder="password" class="form-control">
-                            </div>
-                            <div class="form-group">       
                               <label>Jenis Kelamin</label>
                               <div class="radio-inline">
                                 <label>
@@ -141,7 +137,39 @@
                   </div>
                   <!-- ============ /MODAL TAMBAH GURU =============== -->
 
-                  <!-- ============ MODAL DETAIL GURU =============== -->
+                  <!-- ============ MODAL KONFIRMASI DELETE GURU =============== -->
+                  <?php 
+                  foreach($data as $row) {
+                  ?>
+                  <div class="modal fade" id="modal_konfirmasidelete<?php echo $row['nip'];?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+                      <div class="modal-dialog">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                          <h3 class="modal-title" id="myModalLabel">Delete Jurusan</h3>
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                      </div>
+                      <form class="form-horizontal" method="post" action="<?php echo base_url('Dataguru/delete/');?><?php echo $row['nip'] ?>">
+                          <div class="modal-body">
+
+                              <div class="form-group">
+                                  <label class="control-label col-xs-3" >Apakah anda yakin ingin menghapus data guru <b> <?php echo $row['nama_lengkap']; ?> ? </b></label>
+                              </div>
+
+                          </div>
+
+                          <div class="modal-footer">
+                              <button class="btn" data-dismiss="modal" aria-hidden="true">Batal</button>
+                              <button class="btn btn-danger"> Ya </button>
+                          </div>
+                      </form>
+                      </div>
+                      </div>
+                  </div>
+
+                  <?php }?>
+                <!--END MODAL KONFIRMASI DELETE GURU-->
+
+                <!-- ============ MODAL DETAIL GURU =============== -->
                   <?php 
                     foreach($data as $row) {
                   ?>
@@ -155,40 +183,27 @@
                           <div class="modal-body">
                             <div class="form-group">
                               <label>NIP</label>
-                              <input type="text" name="nip" placeholder="NIP" class="form-control" value="<?php echo $row['nip'] ?>">
+                              <input type="text" name="nip" placeholder="NIP" class="form-control" value="<?php echo $row['nip'] ?>" disabled="">
                             </div>
                             <div class="form-group">       
                               <label>Nama</label>
-                              <input type="text" name="nama" placeholder="Nama" class="form-control" value="<?php echo $row['nama_lengkap'] ?>">
+                              <input type="text" name="nama" placeholder="Nama" class="form-control" value="<?php echo $row['nama_lengkap'] ?>" disabled="">
                             </div>
                             <div class="form-group">       
                               <label>Email</label>
-                              <input type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $row['email'] ?>">
-                            </div>
-                            <div class="form-group">       
-                              <label>Password</label>
-                              <input type="text" name="password" placeholder="password" class="form-control" value="<?php echo $row['password'] ?>">
+                              <input type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $row['email'] ?>" disabled="">
                             </div>
                             <div class="form-group">       
                               <label>Jenis Kelamin</label>
-                              <div class="radio-inline">
-                                <label>
-                                  <input type="radio" name="jk" value="Laki-laki">Laki-laki
-                                </label>
-                              </div>
-                              <div class="radio-inline">
-                                <label>
-                                  <input type="radio" name="jk" value="Perempuan">Perempuan
-                                </label>
-                              </div>
+                              <input type="text" name="jk" class="form-control" value="<?php echo $row['jk'] ?>" disabled="">
                             </div>
                             <div class="form-group">       
                               <label>No Hp.</label>
-                              <input type="text" name="no_hp" placeholder="No Hp." class="form-control" value="<?php echo $row['no_hp'] ?>">
+                              <input type="text" name="no_hp" placeholder="No Hp." class="form-control" value="<?php echo $row['no_hp'] ?>" disabled="">
                             </div>
                             <div class="form-group">       
                               <label>Alamat</label>
-                              <textarea class="form-control" name="alamat"><?php echo $row['alamat'] ?></textarea>
+                              <input class="form-control" name="alamat" disabled="" value="<?php echo $row['alamat'] ?>">
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -215,19 +230,15 @@
                           <div class="modal-body">
                             <div class="form-group">
                               <label>NIP</label>
-                              <input type="text" required="" name="nip" placeholder="NIP" class="form-control" value="<?php echo $row['nip'] ?>">
+                              <input type="text" name="nip" placeholder="NIP" class="form-control" value="<?php echo $row['nip'] ?>" required="">
                             </div>
                             <div class="form-group">       
                               <label>Nama</label>
-                              <input type="text" required="" name="nama" placeholder="Nama" class="form-control" value="<?php echo $row['nama_lengkap'] ?>">
+                              <input type="text" name="nama" placeholder="Nama" class="form-control" value="<?php echo $row['nama_lengkap'] ?>" required="">
                             </div>
                             <div class="form-group">       
                               <label>Email</label>
                               <input type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $row['email'] ?>" required="">
-                            </div>
-                            <div class="form-group">       
-                              <label>Password</label>
-                              <input type="text" name="password" placeholder="password" class="form-control" value="<?php echo $row['password'] ?>" required="">
                             </div>
                             <div class="form-group">       
                               <label>Jenis Kelamin</label>
@@ -261,35 +272,3 @@
                   </div>
                   <?php } ?>
                   <!-- ============ / MODAL UPDATE GURU =============== -->
-
-                  <!-- ============ MODAL KONFIRMASI DELETE GURU =============== -->
-                  <?php 
-                  foreach($data as $row) {
-                  ?>
-                  <div class="modal fade" id="modal_konfirmasidelete<?php echo $row['nip'];?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-                      <div class="modal-dialog">
-                      <div class="modal-content">
-                      <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Delete Jurusan</h3>
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                      </div>
-                      <form class="form-horizontal" method="post" action="<?php echo base_url('Dataguru/delete/');?><?php echo $row['nip'] ?>">
-                          <div class="modal-body">
-
-                              <div class="form-group">
-                                  <label class="control-label col-xs-3" >Apakah anda yakin ingin menghapus data guru <b> <?php echo $row['nama_lengkap']; ?> ? </b></label>
-                              </div>
-
-                          </div>
-
-                          <div class="modal-footer">
-                              <button class="btn" data-dismiss="modal" aria-hidden="true">Batal</button>
-                              <button class="btn btn-danger"> Ya </button>
-                          </div>
-                      </form>
-                      </div>
-                      </div>
-                  </div>
-
-                  <?php }?>
-                <!--END MODAL KONFIRMASI DELETE GURU-->

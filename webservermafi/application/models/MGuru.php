@@ -23,7 +23,7 @@ class MGuru extends CI_Model {
 
 	function update($data, $nip)
 	{
-		return $this->db->where('nip', $nip)
+		return $this->db->where(nip, $nip)
 			->update($this->tabel, $data);
 	}
 

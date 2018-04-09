@@ -1,11 +1,5 @@
 <?php
 
-    /******************************************
-    *      Codeigniter 3 Simple Login         *
-    *   Developer  :  rudiliucs1@gmail.com    *
-    *        Copyright © 2017 Rudi Liu        *
-    *******************************************/
-
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -20,12 +14,19 @@ class Dashboard extends CI_Controller {
     }
 
     public function index() {
-        $this->load->view('admin/header');
-        $this->load->view('admin/dashboard');
+        $this->load->model('MSiswa');
+        $tampildata['datasiswa'] = $this->MSiswa->read()->num_rows();
+        $this->load->model('MGuru');
+        $tampildata['dataguru'] = $this->MGuru->read()->num_rows();
+        $this->load->model('MUser');
+        $tampildata['datauser'] = $this->MUser->read()->num_rows();
+        $tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
+        $this->load->model('MKelas');
+        $tampildata['datakelas'] = $this->MKelas->read()->num_rows();
+        $this->load->model('MJurusan');
+        $tampildata['datajurusan'] = $this->MJurusan->read()->num_rows();
+        $this->load->view('admin/header', $tampildata);
+        $this->load->view('admin/dashboard', $tampildata);
         $this->load->view('admin/footer');
     }
-
-
 }
-
-/* End of file */

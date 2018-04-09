@@ -13,7 +13,9 @@ class Datasiswa extends CI_Controller {
 		$tampildata['datakelas'] = $this->MKelas->read()->result_array();
 		$this->load->model('MSiswa');
 		$tampildata['datasiswa'] = $this->MSiswa->read()->result_array();
-		$this->load->view('admin/header');
+		$this->load->model('MUser');
+        $tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
+		$this->load->view('admin/header',$tampildata);
 		$this->load->view('admin/datasiswa', $tampildata);
 		$this->load->view('admin/footer');
 	}

@@ -42,17 +42,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                          <?php
+                            $no = 1;
+                            foreach ($data as $row) {
+                          ?>
                             <tr>
-                                <td>s</td>
-                                <td>s</td>
-                                <td>s</td>
-                                <td>s</td>
+                                <td width="5%" align="center"><?php echo $no++ ?></td>
+                                <td align="center"><?php echo $row['nis']; ?></td>
+                                <td><?php echo $row['nama_lengkap']; ?></td>
+                                <td><?php echo $row['password']; ?></td>
                                 <td align="center">
                                   <button class="btn btn-sm btn-info">Details</button>
                                   <button class="btn btn-sm btn-success">Update</button>
                                   <button class="btn btn-sm btn-danger">Delete</button>
                                 </td>
                             </tr>
+                          <?php } ?>
                         </tbody>
                       </table>
 
@@ -74,26 +79,24 @@
                           <h5 id="exampleModalLabel" class="modal-title">User siswa</h5>
                           <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                         </div>
-                        <div class="modal-body">
-                          <p>Tambah User Siswa</p>
-                                  <form>
-
-                                    <div class="form-group">       
-                                      <label>NIS</label>
-                                      <input type="nama" placeholder="Nama" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">       
-                                      <label>Password</label>
-                                      <input type="password" placeholder="password" class="form-control">
-                                    </div>
-
-                                  </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        <form method="POST" action="<?php echo base_url('Datauser/createusersiswa'); ?>">
+                          <div class="modal-body">
+                            <input type="hidden" name="level" value="siswa">
+                            <p>Tambah User Siswa</p>
+                              <div class="form-group">       
+                                <label>NIS</label>
+                                <input type="nama" name="nis" placeholder="Nama" class="form-control">
+                              </div>
+                              <div class="form-group">       
+                                <label>Password</label>
+                                <input type="password" name="password" placeholder="password" class="form-control">
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>

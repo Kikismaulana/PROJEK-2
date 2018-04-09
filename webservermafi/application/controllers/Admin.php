@@ -48,5 +48,42 @@ class Admin extends CI_Controller {
         redirect(base_url());
     }
 
+    public function ganti_password($id_users)
+    {
+        $baru = $this->input->post('baru');
+        $konfirmasi = $this->input->post('konfirmasi');
+        $this->load->model('MUser');
+        if ($baru == $konfirmasi) {
+            $password = $konfirmasi;
+            $data = array (
+                'password' => $password
+            );
+            if ($this->MUser->updateadmin($data, $id_users))
+            {
+                $this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
+                        Password berhasil di ganti!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+            } else {
+                $this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Password gagal di ganti!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+            }
+        } else {
+                $this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Password gagal di ganti!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+            }
+        return redirect('Dashboard');
+    }
+
 
 }

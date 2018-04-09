@@ -10,23 +10,29 @@ class Datauser extends CI_Controller {
 
 	public function readuserguru()
 	{
-		$this->load->view('admin/header');
+		$this->load->model('MUser');
+		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
+		$this->load->view('admin/header',$tampildata);
 		$this->load->view('admin/userguru');
 		$this->load->view('admin/footer');
 	}
 
 	public function readusersiswa()
 	{
-		$this->load->view('admin/header');
-		$this->load->view('admin/usersiswa');
+		$this->load->model('MUser');
+		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
+		$tampildata['data'] = $this->MUser->readusersiswa()->result_array();
+		$this->load->view('admin/header',$tampildata);
+		$this->load->view('admin/usersiswa',$tampildata);
 		$this->load->view('admin/footer');
 	}
 
 	public function readuserortu()
 	{
 		$this->load->model('MUser');
+		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
 		$tampildata['data'] = $this->MUser->readuserortu()->result_array();
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$tampildata);
 		$this->load->view('admin/userortu', $tampildata);
 		$this->load->view('admin/footer');
 	}
@@ -63,6 +69,38 @@ class Datauser extends CI_Controller {
                       </div>");
 		}
 		return redirect('Datauser/readuserortu');
+	}
+
+	public function createusersiswa()
+	{
+		$this->load->model('MUser');
+		$NIS = $this->input->POST('nis');
+		$password = $this->input->POST('password');
+		$level = $this->input->POST('level');
+		$data = array (
+			'nis' => $NIS,
+			'password' => $password,
+			'level' => $level
+		);
+		if ($this->MUser->create($data))
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
+                        Data berhasil ditambahkan!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		else
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Data gagal ditambahkan!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		return redirect('Datauser/readusersiswa');
 	}
 
 	public function update()

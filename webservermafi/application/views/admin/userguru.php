@@ -34,7 +34,7 @@
                       <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>No.</th>
+                                <th width="5%">No.</th>
                                 <th>NIP</th>
                                 <th>Nama</th>
                                 <th>Password</th>

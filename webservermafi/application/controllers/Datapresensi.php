@@ -9,15 +9,21 @@ class Datapresensi extends CI_Controller {
 
 	public function readrekap()
 	{
-		$this->load->view('admin/header');
+		$this->load->model('MUser');
+		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
+		$this->load->view('admin/header',$tampildata);
 		$this->load->view('admin/rekapabsen');
 		$this->load->view('admin/footer');
 	}
 
 	public function readizinsiswa()
 	{
-		$this->load->view('admin/header');
-		$this->load->view('admin/izinsiswa');
+		$this->load->model('MUser');
+		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
+		$this->load->model('MIzin');
+		$tampildata['dataizin'] = $this->MIzin->read()->result_array();
+		$this->load->view('admin/header',$tampildata);
+		$this->load->view('admin/izinsiswa',$tampildata);
 		$this->load->view('admin/footer');
 	}
 

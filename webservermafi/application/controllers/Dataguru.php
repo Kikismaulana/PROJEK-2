@@ -9,9 +9,11 @@ class Dataguru extends CI_Controller {
 
 	public function read()
 	{
+		$this->load->model('MUser');
+        $tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
 		$this->load->model('MGuru');
 		$tampildata['data'] = $this->MGuru->read()->result_array();
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$tampildata);
 		$this->load->view('admin/dataguru',$tampildata);
 		$this->load->view('admin/footer');
 	}
@@ -22,7 +24,6 @@ class Dataguru extends CI_Controller {
 		$NIP = $this->input->post('nip');
 		$nama = $this->input->post('nama');
 		$email = $this->input->post('email');
-		$password = $this->input->post('password');
 		$jk = $this->input->post('jk');
 		$no_hp = $this->input->post('no_hp');
 		$alamat = $this->input->post('alamat');
@@ -30,7 +31,6 @@ class Dataguru extends CI_Controller {
 			'nip' => $NIP,
 			'nama_lengkap' => $nama,
 			'email' => $email,
-			'password' => $password,
 			'jk' => $jk,
 			'no_hp' => $no_hp,
 			'alamat' => $alamat
@@ -62,7 +62,6 @@ class Dataguru extends CI_Controller {
 		$NIP = $this->input->post('nip');
 		$nama = $this->input->post('nama');
 		$email = $this->input->post('email');
-		$password = $this->input->post('password');
 		$jk = $this->input->post('jk');
 		$no_hp = $this->input->post('no_hp');
 		$alamat = $this->input->post('alamat');
@@ -70,7 +69,6 @@ class Dataguru extends CI_Controller {
 			'nip' => $NIP,
 			'nama_lengkap' => $nama,
 			'email' => $email,
-			'password' => $password,
 			'jk' => $jk,
 			'no_hp' => $no_hp,
 			'alamat' => $alamat

@@ -87,21 +87,15 @@
                 <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                   <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
                     <ul aria-labelledby="notifications" class="dropdown-menu">
-                      <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                          <div class="msg-profile icon-rss-feed" style="font-size: 40px"></div>
-                          <div class="msg-body">
-                            <h3 class="h5">Jono</h3><span>Izin Siswa</span><small>2018-03-14 09:51:34</small>
-                          </div></a></li>
-                      <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                          <div class="msg-profile icon-rss-feed" style="font-size: 40px"></div>
-                          <div class="msg-body">
-                            <h3 class="h5">Joni</h3><span>Izin Siswa</span><small>2018-03-14 09:51:34</small>
-                          </div></a></li>
-                      <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                          <div  class="msg-profile icon-rss-feed" style="font-size: 40px"></div>
-                          <div class="msg-body">
-                            <h3 class="h5">Jona</h3><span>Izin Siswa</span><small>2018-03-14 09:51:34</small>
-                          </div></a></li>
+                      <?php
+                        foreach ($dataizin as $row) {
+                      ?>
+                        <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                            <div class="msg-profile icon-rss-feed" style="font-size: 40px"></div>
+                            <div class="msg-body">
+                              <h3 class="h5"><?php echo $row['nis']; ?></h3><span>Izin Siswa</span><small><?php echo $row['tanggal']; ?> 09:51:34</small>
+                            </div></a></li>
+                      <?php } ?>
                       <li><a rel="nofollow" href="<?php echo base_url('Datapresensi/readizinsiswa'); ?>" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Lihat semua pesan</strong></a></li>
                     </ul>
                   </li>
@@ -122,7 +116,9 @@
           </div>
         </nav>
       </header>
-
+      <?php
+        foreach ($dataadmin as $row) {
+      ?>
         <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -130,38 +126,41 @@
                         <h4 class="modal-title" id="myModalLabel">Ganti Password</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>Password Lama</label>
-                                    <input class="form-control" placeholder="passwordlama" name="passwordlama" type="password">
-                                </div> 
-                            </div>
+                    <form method="POST" action="<?php echo base_url('Admin/ganti_password/'); ?><?php echo $row['id_users'] ?>">
+                      <div class="modal-body">
+                          <div class="row">
+                              <div class="col-lg-12">
+                                  <div class="form-group">
+                                      <label>Password Lama</label>
+                                      <input class="form-control" placeholder="passwordlama" name="passwordlama" type="text" value="<?php echo $row['password']; ?>" disabled>
+                                  </div> 
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-lg-6">
+                                  <div class="form-group">
+                                      <label>Password Baru</label>
+                                      <input class="form-control" placeholder="Password Baru" type="password" name="baru">
+                                  </div> 
+                              </div>
+                              <div class="col-lg-6">
+                                  <div class="form-group">
+                                      <label>Konfirmasi Password Baru</label>
+                                      <input class="form-control" placeholder="Konfirmasi Password Baru" name="konfirmasi" type="password">
+                                  </div> 
+                              </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Password Baru</label>
-                                    <input class="form-control" placeholder="Password Baru" type="password" name="passwordbaru">
-                                </div> 
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Konfirmasi Password Baru</label>
-                                    <input class="form-control" placeholder="Konfirmasi Password Baru" name="konfirmasipassword" type="password">
-                                </div> 
-                            </div>
+                          
                       </div>
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
-                        <button id="changePasswordSubmit" type="button" class="btn btn-primary">UPDATE</button>
-                    </div>
+                      <div class="modal-footer">
+                          <button type="submit" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+                          <button type="submit" class="btn btn-primary">UPDATE</button>
+                      </div>
+                    </form>
                 </div>
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
+        <?php } ?>
