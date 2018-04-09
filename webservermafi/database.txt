@@ -12,7 +12,7 @@ nama_jurusan varchar (50));
 create table kelas (
 id_kelas int not null PRIMARY KEY DEFAULT NEXTVAL('id_kelas'),
 id_jurusan int not null REFERENCES jurusan (id_jurusan) ON DELETE CASCADE ON UPDATE CASCADE,
-nama_kelas varchar (20));
+nama_kelas varchar (50));
 
 
 create table siswa (
@@ -33,7 +33,6 @@ alamat_ortu text);
 
 create table guru (
 NIP int not null,
-id_kelas int not null REFERENCES kelas (id_kelas) ON DELETE CASCADE ON UPDATE CASCADE,
 nama_lengkap varchar (50),
 email varchar (50),
 jk varchar (9),
@@ -100,4 +99,7 @@ FROM presensi as presensi
 LEFT JOIN izin as izin on izin.id_izin=presensi.id_izin
 LEFT JOIN siswa as siswa on siswa.NIS=presensi.NIS;
 
-https://www.tutorialspoint.com/postgresql/postgresql_php.htm
+alter table users alter column nis set default 0;
+alter table users alter column nisn set default 0;
+alter table users alter column nip set default 0;
+alter table users alter column admin set default 0;
