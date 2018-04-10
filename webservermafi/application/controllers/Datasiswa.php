@@ -130,8 +130,24 @@ class Datasiswa extends CI_Controller {
 		return redirect('Datasiswa/read');
 	}
 
-	public function delete()
+	public function delete($nis)
 	{
-		
+		$this->load->model('MSiswa');
+		if($this->MSiswa->delete($nis)){
+			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
+                        Berhasil hapus data!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		} else {
+			$this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Gagal hapus data!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		return redirect('Datasiswa/read');
 	}
 }

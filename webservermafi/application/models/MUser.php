@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MUser extends CI_Model {
 
 	public $tabel = 'users';
-	public $v_ortu = 'v_ortu';
-	public $v_siswa = 'v_siswa';
-	public $v_guru = 'v_guru';
+	public $v_ortu = 'v_userortu';
+	public $v_siswa = 'v_usersiswa';
+	public $v_guru = 'v_userguru';
 
 	// Harus ada
 	function __construct()
@@ -44,7 +44,7 @@ class MUser extends CI_Model {
 	public function readusersiswa()
 	{
 		$levelsiswa = "siswa";
-		return $this->db->get($this->v_siswa,'level',$levelsiswa);
+		return $this->db->get_where($this->v_siswa,'nis != ');
 	}
 
 	function updateadmin($data, $id_users)

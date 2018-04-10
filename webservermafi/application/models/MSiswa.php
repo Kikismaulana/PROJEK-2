@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MSiswa extends CI_Model {
 
-	public $tabel = 'v_siswa';
+	public $tabel = 'v_datasiswa';
 
 	// Harus ada
 	function __construct()
@@ -13,7 +13,7 @@ class MSiswa extends CI_Model {
 
 	public function create($data)
 	{
-		return $this->db->insert($this->tabel, $data);
+		return $this->db->insert('siswa', $data);
 	}
 
 	public function read()
@@ -25,5 +25,10 @@ class MSiswa extends CI_Model {
 	{
 		return $this->db->where(nis, $nis)
 			->update('siswa', $data);
+	}
+
+	function delete($nis)
+	{
+		return $this->db->delete('siswa', ['nis'=>$nis]);
 	}
 }
