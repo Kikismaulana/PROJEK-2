@@ -136,13 +136,158 @@ class Datauser extends CI_Controller {
 		return redirect('Datauser/readuserguru');
 	}
 
-	public function update()
+	public function updateuserguru($nip)
 	{
-		
+		$this->load->model('MUser');
+		$nip = $this->input->POST('nip');
+		$password = $this->input->POST('password');
+		$data = array(
+			'nip' => $nip,
+			'password' => $password
+		);
+		if ($this->MUser->updateuserguru($data,$nip))
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
+                        Data berhasil diupdate!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		else
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Data gagal diupdate!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		return redirect('Datauser/readuserguru');
 	}
 
-	public function delete()
+	public function deleteuserguru($nip)
 	{
-		
+		$this->load->model('MUser');
+		if($this->MUser->deleteuserguru($nip)){
+			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
+                        Berhasil hapus data!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		} else {
+			$this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Gagal hapus data!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		return redirect('Datauser/readuserguru');
 	}
+	public function deleteusersiswa($nis)
+	{
+		$this->load->model('MUser');
+		if($this->MUser->deleteusersiswa($nis)){
+			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
+                        Berhasil hapus data!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		} else {
+			$this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Gagal hapus data!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		return redirect('Datauser/readusersiswa');
+	}
+	public function updateusersiswa($nis)
+	{
+		$this->load->model('MUser');
+		$nis = $this->input->POST('nis');
+		$password = $this->input->POST('password');
+		$data = array(
+			'nis' => $nis,
+			'password' => $password
+		);
+		if ($this->MUser->updateusersiswa($data,$nis))
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
+                        Data berhasil diupdate!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		else
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Data gagal diupdate!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		return redirect('Datauser/readusersiswa');
+	}
+
+	public function deleteuserortu($nisn)
+	{
+		$this->load->model('MUser');
+		if($this->MUser->deleteuserortu($nisn)){
+			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
+                        Berhasil hapus data!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		} else {
+			$this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Gagal hapus data!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		return redirect('Datauser/readuserortu');
+	}
+
+	public function updateuserortu($nisn)
+	{
+		$this->load->model('MUser');
+		$nisn = $this->input->POST('nisn');
+		$nis = $this->input->POST('nis');
+		$password = $this->input->POST('password');
+		$data = array(
+			'nisn'=> $nisn,
+			'nis' => $nis,
+			'password' => $password
+		);
+		if ($this->MUser->updateuserortu($data,$nisn))
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
+                        Data berhasil diupdate!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		else
+		{
+			$this->session->set_flashdata('info', "<div class='alert alert-danger alert-dismissible fade show'>
+                        Data gagal diupdate!
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'>&times;</span>
+                        </button>
+                      </div>");
+		}
+		return redirect('Datauser/readuserortu');
+	}
+
+
 }

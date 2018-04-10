@@ -66,7 +66,7 @@
                                 <td align="center">
                                   <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#modal_detail<?php echo $row['nip'];?>">Details</a>
                                   <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_update<?php echo $row['nip'];?>">Update</button>
-                                  <a data-toggle="modal" data-target="#modal_konfirmasidelete<?php echo $row['nip'];?>"" class="btn btn-sm btn-danger text-white">Delete</a>
+                                  <a data-toggle="modal" data-target="#modal_konfirmasidelete<?php echo $row['nip'];?>" class="btn btn-sm btn-danger text-white">Delete</a>
                                 </td>
                             </tr>
                           <?php } ?>

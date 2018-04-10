@@ -52,4 +52,38 @@ class MUser extends CI_Model {
 		return $this->db->where('id_users', $id_users)
 			->update($this->tabel, $data);
 	}
+
+	function deleteuserguru($nip)
+	{
+		return $this->db->delete($this->tabel, ['nip'=>$nip]);
+	}
+
+	function updateuserguru($data, $nip)
+	{
+		return $this->db->where(nip, $nip)
+			->update($this->tabel, $data);
+	}
+
+	function deleteusersiswa($nis)
+	{
+		return $this->db->delete($this->tabel, [nis=>$nis]);
+	}
+
+	function updateusersiswa($data, $nis)
+	{
+		return $this->db->where(nis, $nis)
+			->update($this->tabel, $data);
+	}
+
+	function deleteuserortu($nisn)
+	{
+		return $this->db->delete($this->tabel, [nisn=>$nisn]);
+	}
+
+	function updateuserortu($data, $nisn)
+	{
+		return $this->db->where(nisn, $nisn)
+			->update($this->tabel, $data);
+	}
+
 }

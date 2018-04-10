@@ -137,7 +137,7 @@
                                   <td align="center">
                                     <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#modal_detail<?php echo $row['nis'];?>">Details</a>
                                   <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_update<?php echo $row['nis'];?>">Update</button>
-                                  <a data-toggle="modal" data-target="#modal_konfirmasidelete<?php echo $row['nis'];?>"" class="btn btn-sm btn-danger text-white">Delete</a>
+                                  <a data-toggle="modal" data-target="#modal_konfirmasidelete<?php echo $row['nis'];?>" class="btn btn-sm btn-danger text-white">Delete</a>
                                   </td>
                               </tr>
                             <?php } ?>
@@ -281,11 +281,11 @@
                           <h3 class="modal-title" id="myModalLabel">Delete Siswa</h3>
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                       </div>
-                      <form class="form-horizontal" method="post" action="<?php echo base_url('Datasiswa/delete/');?><?php echo $row['nis'] ?>">
+                      <form class="form-horizontal" method="post" action="<?php echo base_url('Datasiswa/deleteusersiswa/');?><?php echo $row['nis'] ?>">
                           <div class="modal-body">
 
                               <div class="form-group">
-                                  <label class="control-label col-xs-3" >Apakah anda yakin ingin menghapus data guru <b> <?php echo $row['nama_lengkap']; ?> ? </b></label>
+                                  <label class="control-label col-xs-3" >Apakah anda yakin ingin menghapus data Siswa <b> <?php echo $row['nama_lengkap']; ?> ? </b></label>
                               </div>
 
                           </div>

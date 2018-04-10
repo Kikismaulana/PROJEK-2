@@ -51,7 +51,7 @@
                                 <td><?php echo $row['nama_kelas']; ?></td>
                                 <td align="center">
                                   <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#modal_edit<?php echo $row['id_kelas'];?>">Update</a>
-                                  <a data-toggle="modal" data-target="#modal_konfirmasidelete<?php echo $row['id_kelas'];?>"" class="btn btn-sm btn-danger text-white">Delete</a>
+                                  <a data-toggle="modal" data-target="#modal_konfirmasidelete<?php echo $row['id_kelas'];?>" class="btn btn-sm btn-danger text-white">Delete</a>
                                 </td>
                             </tr>
                           <?php } ?>
