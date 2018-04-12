@@ -134,7 +134,7 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="myModalLabel">Tambah kelas</h3>
+                <h3 class="modal-title" id="myModalLabel">Update kelas</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo base_url('Datakelas/update/')?><?php echo $row['id_kelas'] ?>">
@@ -194,7 +194,7 @@
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="myModalLabel">Delete Jurusan</h3>
+                <h3 class="modal-title" id="myModalLabel">Delete Kelas</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             </div>
             <form class="form-horizontal" method="post" action="<?php echo base_url('Datakelas/delete/');?><?php echo $row['id_kelas'] ?>">

@@ -163,7 +163,7 @@ terlambat int
 );
 
 create view v_userortu as select users.nis, users.nisn, users.password, users.level,
-siswa.nama_lengkap, kelas.nama_kelas, siswa.jk, siswa.ttl, siswa.email, siswa.agama, siswa.alamat, siswa.no_hp, siswa.nama_ayah, siswa.nama_ibu, siswa.pekerjaan_ayah, siswa.pekerjaan_ibu
+siswa.nama_lengkap, kelas.nama_kelas, siswa.jk, siswa.ttl, siswa.email, siswa.agama, siswa.alamat, siswa.no_hp, siswa.nama_ayah, siswa.nama_ibu, siswa.pekerjaan_ayah, siswa.pekerjaan_ibu, siswa.alamat_ortu
 FROM siswa as siswa
 LEFT JOIN users as users on users.nis=siswa.nis
 LEFT JOIN kelas as kelas on kelas.id_kelas=siswa.id_kelas

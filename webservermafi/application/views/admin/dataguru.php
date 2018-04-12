@@ -26,18 +26,19 @@
                     <!--Pilih jurusan-->
                     <div class="form-group row">
 
-                      <div class="col-sm-5">
-                        <label class="col-sm-12 form-control-label">Pilih file <b>.CSV</b></label>
-                        <div class="col-sm-12">
-                          <input type="file" name="file" class="form-control"  style="width: 80%">
+                      <div class="col-sm-12 form-group container-fluid" style="padding-bottom: 20px">
+                        <!-- Notifikasi -->
+                        <?php if ($info = $this->session->flashdata('info')) {
+                          echo $info;
+                        } ?>
+                        <!-- /Notifikasi -->
+                        <div class="form-group">
+                          <input type="file" name="file" class="form-control"  style="width: 32%">
                         </div>
-                      </div>
-
-                      <div class="col-sm-12" style="padding-bottom: 20px">
-                        <div class="col-sm-12">
-                          <button class="btn btn-warning text-white">Import Data</button>
-                          <button class="btn btn-danger text-white">Get .Pdf</button>
-                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success"> Tambah data</button>
+                        <div class="form-group">
+                          <button class="btn btn-warning text-white">Import data</button>
+                          <button class="btn btn-danger text-white">Get .PDF</button>
+                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Tambah data</button>
                         </div>
                       </div>
 

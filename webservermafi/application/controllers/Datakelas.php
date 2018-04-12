@@ -9,6 +9,8 @@ class Datakelas extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('MIzin');
+		$tampildata['dataizin'] = $this->MIzin->read()->result_array();
 		$this->load->model('MUser');
 		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
 		$this->load->model('Mkelas');

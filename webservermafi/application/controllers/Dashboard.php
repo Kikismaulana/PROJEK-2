@@ -14,6 +14,8 @@ class Dashboard extends CI_Controller {
     }
 
     public function index() {
+        $this->load->model('MIzin');
+        $tampildata['dataizin'] = $this->MIzin->read()->result_array();
         $this->load->model('MSiswa');
         $tampildata['datasiswa'] = $this->MSiswa->read()->num_rows();
         $this->load->model('MGuru');

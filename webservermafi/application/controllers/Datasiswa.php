@@ -9,6 +9,8 @@ class Datasiswa extends CI_Controller {
 
 	public function read()
 	{
+		$this->load->model('MIzin');
+		$tampildata['dataizin'] = $this->MIzin->read()->result_array();
 		$this->load->model('MKelas');
 		$tampildata['datakelas'] = $this->MKelas->read()->result_array();
 		$this->load->model('MSiswa');

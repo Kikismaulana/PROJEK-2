@@ -17,86 +17,6 @@
 
                 <!-- Conten Header-->
                 <div class="card-header d-flex align-items-center">
-                  <h4>Pilih data yang akan di tampilkan</h4>
-                </div>
-
-                <!-- Conten value-->
-                <div class="card-body container-fluid">
-                  <div class="form-group">
-
-                    <!--Pilih jurusan-->
-                    <div class="form-group row">
-
-                      <div class="col-sm-4">
-                        <label class="col-sm-12 form-control-label">Pilih Kelas</label>
-                        <div class="col-sm-12">
-                          <select name="account" class="form-control">
-                            <option>--PILIH KELAS--</option>
-                            <?php foreach ($datakelas as $row) { ?>
-                            <option><?php echo $row['nama_kelas']; ?></option>
-                            <?php } ?>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div class="col-sm-3">
-                        <div class="col-sm-12" style="padding-top: 30px">
-                          <button class="btn btn-info col-sm-12">Lihat data</button>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <!-- /Conten Header-->
-
-                <!-- Conten Header-->
-                <div class="card-header d-flex align-items-center">
-                  <h4>Import data</h4>
-                </div>
-
-                <!-- Conten value-->
-                <div class="card-body container-fluid">
-                  <div class="form-group">
-
-                    <!--Pilih jurusan-->
-                    <div class="form-group row">
-
-                      <div class="col-sm-4">
-                        <label class="col-sm-12 form-control-label">Pilih file <b>.CSV</b></label>
-                        <div class="col-sm-12 mb-3">
-                          <input type="file" name="file" class="form-control">
-                        </div>
-                      </div>
-
-                      <div class="col-sm-8">
-                        <div class="col-sm-12" style="padding-top: 30px">
-                          <button class="btn btn-warning text-white">Import data</button>
-                          <button class="btn btn-danger text-white">Get .PDF</button>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <!-- /Conten Header-->
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--Content-->
-
-      <!--Content-->
-      <section class="forms">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="card">
-
-                <!-- Conten Header-->
-                <div class="card-header d-flex align-items-center">
                   <h4>Data siswa</h4>
                 </div>
 
@@ -110,7 +30,14 @@
                           echo $info;
                         } ?>
                         <!-- /Notifikasi -->
-                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Tambah data</button>
+                        <div class="form-group">
+                          <input type="file" name="file" class="form-control"  style="width: 32%">
+                        </div>
+                        <div class="form-group">
+                          <button class="btn btn-warning text-white">Import data</button>
+                          <button class="btn btn-danger text-white">Get .PDF</button>
+                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Tambah data</button>
+                        </div>
                       </div>
                       <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                           <thead>
@@ -281,7 +208,7 @@
                           <h3 class="modal-title" id="myModalLabel">Delete Siswa</h3>
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                       </div>
-                      <form class="form-horizontal" method="post" action="<?php echo base_url('Datasiswa/deleteusersiswa/');?><?php echo $row['nis'] ?>">
+                      <form class="form-horizontal" method="post" action="<?php echo base_url('Datasiswa/delete/');?><?php echo $row['nis'] ?>">
                           <div class="modal-body">
 
                               <div class="form-group">
@@ -419,9 +346,11 @@
                                 <div class="form-group">
                                   <label>Kelas</label>
                                   <select name="id_kelas" class="form-control" required="" id="id_kelas">
-                                      <option class="active">--PILIH KELAS--</option>
-                                      <?php foreach ($datasiswa as $row) { ?>
+                                      <?php foreach ($datakelas as $row) { ?>
                                       <option value="<?php echo $row['id_kelas']; ?>"> <?php echo $row['nama_kelas']; ?></option>
+                                      <?php } ?>
+                                      <?php foreach ($datasiswa as $row) { ?>
+                                      <option selected="" value="<?php echo $row['id_kelas']; ?>"> <?php echo $row['nama_kelas']; ?></option>
                                       <?php } ?>
                                   </select>
                                 </div>
@@ -448,7 +377,7 @@
                                 <div class="form-group">
                                   <label>Agama</label>
                                   <select name="agama" class="form-control" required="">
-                                    <option>--PILIH AGAMA--</option>
+                                    <option selected="" value="ISLAM"><?php echo $row['agama'] ?></option>
                                     <option value="ISLAM">ISLAM</option>
                                     <option value="PROTESTAN">PROTESTAN</option>
                                     <option value="KATOLIK">KATOLIK</option>

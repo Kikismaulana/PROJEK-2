@@ -10,6 +10,8 @@ class Datauser extends CI_Controller {
 
 	public function readuserguru()
 	{
+		$this->load->model('MIzin');
+		$tampildata['dataizin'] = $this->MIzin->read()->result_array();
 		$this->load->model('MUser');
 		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
 		$tampildata['data'] = $this->MUser->readuserguru()->result_array();
@@ -20,6 +22,8 @@ class Datauser extends CI_Controller {
 
 	public function readusersiswa()
 	{
+		$this->load->model('MIzin');
+		$tampildata['dataizin'] = $this->MIzin->read()->result_array();
 		$this->load->model('MUser');
 		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
 		$tampildata['data'] = $this->MUser->readusersiswa()->result_array();
@@ -30,6 +34,8 @@ class Datauser extends CI_Controller {
 
 	public function readuserortu()
 	{
+		$this->load->model('MIzin');
+		$tampildata['dataizin'] = $this->MIzin->read()->result_array();
 		$this->load->model('MUser');
 		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
 		$tampildata['data'] = $this->MUser->readuserortu()->result_array();
