@@ -191,6 +191,12 @@
                                   <label>NIS</label>
                                   <input class="form-control" type="text" value="<?php echo $row['nis'] ?>" name="nis" placeholder="NIS" class="form-control" required="" disabled="">
                                 </div>
+
+                                <div class="form-group">
+                                  <label>NISN</label>
+                                  <input class="form-control" type="text" value="<?php echo $row['nisn'] ?>" name="nisn" placeholder="NISN" class="form-control" required="" disabled="">
+                                </div>
+                                
                                  <div class="form-group">
                                   <label>Password</label>
                                   <input class="form-control" type="text" name="kelas" value="<?php echo $row['password'] ?>" disabled="">

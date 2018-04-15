@@ -31,20 +31,17 @@ class MUser extends CI_Model {
 
 	public function readuserortu()
 	{
-		$levelortu = "ortu";
-		return $this->db->get($this->v_ortu,'level', $levelortu);
+		return $this->db->get($this->v_ortu);
 	}
 
 	public function readuserguru()
 	{
-		$levelguru = "guru";
-		return $this->db->get($this->v_guru,'level', $levelguru);
+		return $this->db->get($this->v_guru);
 	}
 
 	public function readusersiswa()
 	{
-		$levelsiswa = "siswa";
-		return $this->db->get_where($this->v_siswa,'nis != ');
+		return $this->db->get_where($this->v_siswa);
 	}
 
 	function updateadmin($data, $id_users)

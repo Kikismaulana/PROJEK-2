@@ -49,7 +49,7 @@
                           <?php
                             foreach ($dataizin as $row) {
                           ?>
-                          <table cellpadding="10px" cellpadding="10px" style="font-size: 15px">
+                          <table id="izin" cellpadding="10px" cellpadding="10px" style="font-size: 15px">
                             <tr>
                               <td>NIS</td>
                               <td>:</td>

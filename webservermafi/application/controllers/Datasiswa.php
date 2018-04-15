@@ -26,6 +26,7 @@ class Datasiswa extends CI_Controller {
 	{
 		$this->load->model('MSiswa');
 		$NIS = $this->input->POST('nis');
+		$NISN = $this->input->POST('nisn');
 		$id_kelas = $this->input->POST('id_kelas');
 		$nama_lengkap = $this->input->POST('nama');
 		$jk = $this->input->POST('jk');
@@ -42,6 +43,7 @@ class Datasiswa extends CI_Controller {
 		$id_kelas = $this->input->POST('id_kelas');
 		$data = array(
 			'nis' => $NIS,
+			'nisn' => $NISN,
 			'id_kelas' => $id_kelas,
 			'nama_lengkap' => $nama_lengkap,
 			'jk' => $jk,

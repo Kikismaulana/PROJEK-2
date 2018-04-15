@@ -105,6 +105,11 @@
                                 </div>
 
                                 <div class="form-group">
+                                  <label>NISN</label>
+                                  <input type="text" name="nisn" placeholder="NISN" class="form-control" required="">
+                                </div>
+
+                                <div class="form-group">
                                   <label>Kelas</label>
                                   <select name="id_kelas" class="form-control" required="" id="id_kelas">
                                       <option class="active">--PILIH KELAS--</option>
@@ -249,6 +254,11 @@
                                 <div class="form-group">
                                   <label>NIS</label>
                                   <input class="form-control" type="text" value="<?php echo $row['nis'] ?>" name="nis" placeholder="NIS" class="form-control" required="" disabled="">
+                                </div>
+
+                                <div class="form-group">
+                                  <label>NISN</label>
+                                  <input class="form-control" type="text" value="<?php echo $row['nisn'] ?>" name="nisN" placeholder="NISN" class="form-control" required="" disabled="">
                                 </div>
 
                                 <div class="form-group">
