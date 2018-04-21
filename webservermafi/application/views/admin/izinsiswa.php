@@ -29,18 +29,18 @@
                         <div class="card-body">
                           <?php
                             foreach ($dataizin as $row) {
-                              if ($row['status'] == 'Accepted' && $row['presensi'] != 'Tidak Hadir') {
+                              if ($row['status'] == 'Accepted' || $row['status'] == 'Decline') {
                           ?>
                           <div class="form-group">
-                            <a href="<?php echo base_url('Datapresensi/updatestatus/'); ?><?php echo $row['id_izin'] ?>" class="btn btn-sm btn-success btn-lg text-white col-md-12"><?php echo "Bapak "; echo $row['nama_ayah']; echo " / Ibu "; echo $row['nama_ibu']; ?></a>
+                            <a href="<?php echo base_url('Datapresensi/readdetailizinsiswa/'); ?><?php echo $row['id_izin'] ?>" class="btn btn-sm btn-success btn-lg text-white col-md-12"><?php echo "Bapak "; echo $row['nama_ayah']; echo " / Ibu "; echo $row['nama_ibu']; ?></a>
                           </div>
                           <?php } elseif ($row['status'] == 'Read') { ?>
                           <div class="form-group">
-                            <a href="<?php echo base_url('Datapresensi/updatestatus/'); ?><?php echo $row['id_izin'] ?>" class="btn btn-sm btn-info btn-lg text-white col-md-12"><?php echo "Bapak "; echo $row['nama_ayah']; echo " / Ibu "; echo $row['nama_ibu']; ?></a>
+                            <a href="<?php echo base_url('Datapresensi/readdetailizinsiswa/'); ?><?php echo $row['id_izin'] ?>" class="btn btn-sm btn-info btn-lg text-white col-md-12"><?php echo "Bapak "; echo $row['nama_ayah']; echo " / Ibu "; echo $row['nama_ibu']; ?></a>
                           </div>
                           <?php } else { ?>
                           <div class="form-group">
-                            <a href="<?php echo base_url('Datapresensi/updatestatus/'); ?><?php echo $row['id_izin'] ?>" class="btn btn-sm btn-warning btn-lg text-white col-md-12"><?php echo "Bapak "; echo $row['nama_ayah']; echo " / Ibu "; echo $row['nama_ibu']; ?></a>
+                            <a href="<?php echo base_url('Datapresensi/updatestatusbaca/'); ?><?php echo $row['id_izin'] ?>" class="btn btn-sm btn-warning btn-lg text-white col-md-12"><?php echo "Bapak "; echo $row['nama_ayah']; echo " / Ibu "; echo $row['nama_ibu']; ?></a>
                           </div>
                           <?php } } ?>
                         </div>
@@ -96,7 +96,7 @@
                               <td><b><?php echo $datadetailizin['alasan']; ?></b></td>
                             </tr>
                           </table>
-                            <?php if ($datadetailizin['presensi'] == 'Tidak Hadir') { ?>
+                            <?php if ($datadetailizin['status'] == '0' || $datadetailizin['status'] == 'Read') { ?>
                             <div style="padding: 10px; padding-top: 30px">
                               <a href="<?php echo base_url('Datapresensi/updatepresensisetuju/'); ?><?php echo $datadetailizin['id_izin'] ?>" class="btn btn-sm btn-success">Accept</a>
                               <a href="<?php echo base_url('Datapresensi/updatepresensitidaksetuju/'); ?><?php echo $datadetailizin['id_izin'] ?>" class="btn btn-sm btn-danger">Decline</a>

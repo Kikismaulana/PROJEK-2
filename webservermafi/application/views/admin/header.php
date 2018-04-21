@@ -87,20 +87,9 @@
                 <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                   <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
                     <i class="fa fa-envelope"></i>
-                      <?php if ($jumlah != 0) { ?>
-                        <span class="badge badge-info"><?php echo "$jumlah"; ?></span>
-                      <?php } ?></a>
+                      <div id="getdata"></div></a>
                     <ul aria-labelledby="notifications" class="dropdown-menu">
-                      <?php
-                        foreach ($dataizin as $row) {
-                          if ($row['status'] == '0' && $row['presensi'] == 'Tidak Hadir') {
-                      ?>
-                        <li><a rel="nofollow" href="<?php echo base_url('Datapresensi/updatestatus/'); ?><?php echo $row['id_izin'] ?>" class="dropdown-item d-flex"> 
-                            <div class="msg-profile icon-rss-feed" style="font-size: 40px"></div>
-                            <div class="msg-body">
-                              <h3 class="h5"><?php echo $row['nis']; ?></h3><span>Izin Siswa</span><small><?php echo $row['tanggal']; ?> 09:51:34</small>
-                            </div></a></li>
-                      <?php } } ?>
+                      <div id="listizin"></div>
                       <li><a rel="nofollow" href="<?php echo base_url('Datapresensi/readizinsiswa'); ?>" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Lihat semua pesan</strong></a></li>
                     </ul>
                   </li>
@@ -169,3 +158,33 @@
         </div>
         <!-- /.modal -->
         <?php } ?>
+
+        <script>
+            function sendnotif() {
+                 xmlhttp = new XMLHttpRequest();
+                 xmlhttp.open("GET","<?php echo site_url('Ajax/notif'); ?>",false);
+                 xmlhttp.send(null);
+//                 console.log(xmlhttp.responseText);
+//                document.getElementById("getdata").innerHTML = Date();
+                document.getElementById("getdata").innerHTML = xmlhttp.responseText;
+            }
+            //sendMail();
+            setInterval(function () {
+                sendnotif();
+            }, 1000);
+        </script>
+
+        <script>
+            function sendlist() {
+                 xmlhttp = new XMLHttpRequest();
+                 xmlhttp.open("GET","<?php echo site_url('Ajax/list'); ?>",false);
+                 xmlhttp.send(null);
+//                 console.log(xmlhttp.responseText);
+//                document.getElementById("getdata").innerHTML = Date();
+                document.getElementById("listizin").innerHTML = xmlhttp.responseText;
+            }
+            //sendMail();
+            setInterval(function () {
+                sendlist();
+            }, 1000);
+        </script>

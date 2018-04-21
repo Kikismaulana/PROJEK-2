@@ -26,9 +26,25 @@ class MIzin extends CI_Model {
 				->get($this->tabel2);	
 	}
 
-	function updatestatus($data, $id_izin)
+	function updatestatusbaca($data, $id_izin)
+	{
+		$statusnya = 'Read';
+		return $this->db->where('id_izin ='.$id_izin)
+			->where('status != ', $statusnya)
+			->update($this->tabel, $data);
+	}
+
+	function updatestatussetuju($data, $id_izin)
 	{
 		$statusnya = 'Accepted';
+		return $this->db->where('id_izin ='.$id_izin)
+			->where('status != ', $statusnya)
+			->update($this->tabel, $data);
+	}
+
+	function updatestatustidaksetuju($data, $id_izin)
+	{
+		$statusnya = 'Decline';
 		return $this->db->where('id_izin ='.$id_izin)
 			->where('status != ', $statusnya)
 			->update($this->tabel, $data);

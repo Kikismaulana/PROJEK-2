@@ -44,19 +44,19 @@ class Datapresensi extends CI_Controller {
 		$this->load->view('admin/footer');
 	}
 
-	public function creat()
+	public function create()
 	{
 
 	}
 
-	public function updatestatus($id_izin)
+	public function updatestatusbaca($id_izin)
 	{
 		$this->load->model('MIzin');
 		$updatestatusnya = 'Read';
 		$data = array(
 			'status' => $updatestatusnya
 		);
-		$this->MIzin->updatestatus($data, $id_izin);	
+		$this->MIzin->updatestatusbaca($data, $id_izin);	
 		return redirect('Datapresensi/readdetailizinsiswa/'.$id_izin);
 	}
 
@@ -67,7 +67,7 @@ class Datapresensi extends CI_Controller {
 		$data = array(
 			'status' => $updatestatusnya
 		);
-		$status = $this->MIzin->updatestatus($data, $id_izin);
+		$status = $this->MIzin->updatestatussetuju($data, $id_izin);
 		$presensi = $this->MIzin->updatepresensi($id_izin);
 		if ($status && $presensi)
 		{
@@ -97,7 +97,7 @@ class Datapresensi extends CI_Controller {
 		$data = array(
 			'status' => $updatestatusnya
 		);
-		$status = $this->MIzin->updatestatus($data, $id_izin);
+		$status = $this->MIzin->updatestatustidaksetuju($data, $id_izin);
 		if ($status)
 		{
 			$this->session->set_flashdata('info', "<div class='alert alert-success alert-dismissible fade show'>
