@@ -19,11 +19,37 @@
                 <div class="card-header d-flex align-items-center">
                   <h4>Rekap Absen</h4>
                 </div>
-
                 <!-- Conten value-->
                 <div class="card-body container-fluid">
                   <div class="form-group">
-                    
+                        <input type="hidden" name="module" value="laporan">
+                        <div class="col-lg-4">
+                          <form method="post" action="<?php echo base_url('Datapresensi/rekapdetail') ?>">
+                            <div class="form-group">
+                              <label>Tahun</label>
+                              <select class="form-control" name="tahun">
+                                <?php 
+                                  $ht=2010;
+                                  while($ht<=2050){
+                                    $to=$ht+1;
+                                  if(date("m")>=7){
+                                    $e=$ht;
+                                  }else{
+                                    $e=$to; 
+                                  }
+                                  if(date("Y")==$e){
+                                    echo "<option selected>$ht-$to</option>"; 
+                                  }else{
+                                    echo "<option>$ht-$to</option>";  
+                                    
+                                  }
+                                  $ht++;
+                                }?>
+                              </select>
+                            </div>
+                            <button type="submit" class="btn btn-info">Submit</button>
+                          </form>
+                        </div>
                   </div>
                 </div>
               </div>

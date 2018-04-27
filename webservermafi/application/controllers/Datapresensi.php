@@ -19,6 +19,28 @@ class Datapresensi extends CI_Controller {
 		$this->load->view('admin/footer');
 	}
 
+	public function rekapdetail()
+	{
+		$tahun = $this->input->post('tahun');
+		$pecah = explode("-", $tahun);
+		$year2=$pecah[0];
+		$year3=$pecah[1];
+		$tampildata['tahun1'] = $year2;
+		$tampildata['tahun2'] = $year3;
+		// echo "$year2 - $year3";
+		// $this->load->view('admin/coba',$tampildata);
+		$this->load->model('MUser');
+		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
+		$this->load->model('MIzin');
+		$tampildata['dataizin'] = $this->MIzin->read()->result_array();
+		$tampildata['jumlah'] = $this->MIzin->jumlahizin()->num_rows();
+		$tampildata['tahun'] = $tahun;
+		$this->load->view('admin/header',$tampildata);
+		$this->load->view('admin/rekapabsen');
+		$this->load->view('admin/rekapdetail', $tampildata);
+		$this->load->view('admin/footer');
+	}
+
 	public function readizinsiswa()
 	{
 		$this->load->model('MUser');

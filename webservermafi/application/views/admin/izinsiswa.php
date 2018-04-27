@@ -23,7 +23,7 @@
                 <!-- Conten value-->
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div class="card">
                         <h5 class="card-header bg-light">Pengirim</h5>
                         <div class="card-body">
@@ -47,7 +47,7 @@
                       </div>
                     </div>
 
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                       <div class="card">
                         <h5 class="card-header bg-light">Detail</h5>
                         <div class="card-body">
@@ -56,16 +56,15 @@
                               echo $info;
                             } ?>
                           <!-- /Notifikasi -->
-                          
+
+                          <?php
+                            if (isset($datadetailizin['id_izin'])) {
+                          ?>
                           <?php if ($datadetailizin['status'] == "Accepted") { ?>
                             <div class="alert alert-success" role="alert">Perizinan Disetujui <i class="fa fa-check-square-o"></i></div>
                           <?php } else { ?>
                             <div class="alert alert-danger" role="alert">Perizinan Ditolak <i class="fa fa-window-close-o"></i></div>
                           <?php }  ?>
-
-                          <?php
-                            if (isset($datadetailizin['id_izin'])) {
-                          ?>
                           <table id="izin" cellpadding="10px" cellpadding="10px" style="font-size: 15px">
                             <tr>
                               <td>NIS</td>
@@ -125,7 +124,7 @@
                           <table cellpadding="10px" cellpadding="10px">
                           <tr>
                             <td width="50px" height="50px" style="background-color: #FFC107"></td>
-                            <td><h3> : Belum dibaca + Belum di konfirmasi</h3></td>
+                            <td><h3> : Belum dibaca</h3></td>
                           </tr>
                           <tr>
                             <td></td>
@@ -133,7 +132,7 @@
                           </tr>
                           <tr>
                             <td width="50px" height="50px" style="background-color: #17A2B8"></td>
-                            <td><h3> : Sudah di baca + Belum di konfirmasi</h3></td>
+                            <td><h3> : Sudah di baca tetapi belum di konfirmasi</h3></td>
                           </tr>
                           <tr>
                             <td></td>

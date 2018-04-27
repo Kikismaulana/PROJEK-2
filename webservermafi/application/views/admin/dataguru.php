@@ -33,7 +33,7 @@
                         } ?>
                         <!-- /Notifikasi -->
                         <div class="form-group">
-                          <input type="file" name="file" class="form-control"  style="width: 32%">
+                          <input type="file" name="file" class="form-control"  style="width: 36.5%">
                         </div>
                         <div class="form-group">
                           <button class="btn btn-warning text-white">Import data</button>
