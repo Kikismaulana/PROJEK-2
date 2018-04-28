@@ -27,6 +27,7 @@ class Datapresensi extends CI_Controller {
 		$year3=$pecah[1];
 		$tampildata['tahun1'] = $year2;
 		$tampildata['tahun2'] = $year3;
+		$tampildata['tahun'] = $tahun;
 		// echo "$year2 - $year3";
 		// $this->load->view('admin/coba',$tampildata);
 		$this->load->model('MUser');
@@ -35,8 +36,14 @@ class Datapresensi extends CI_Controller {
 		$tampildata['dataizin'] = $this->MIzin->read()->result_array();
 		$tampildata['jumlah'] = $this->MIzin->jumlahizin()->num_rows();
 		$tampildata['tahun'] = $tahun;
+		$this->load->model('MPresensi');
+		$tampildata['presensi'] = $this->MPresensi->read()->result_array();
+		$tampildata['H'] = $this->MPresensi->readjumlahhadir()->num_rows();
+		$tampildata['A'] = $this->MPresensi->readjumlahtidakhadir()->num_rows();
+		$tampildata['I'] = $this->MPresensi->readjumlahizin()->num_rows();
+		$tampildata['S'] = $this->MPresensi->readjumlahsakit()->num_rows();
 		$this->load->view('admin/header',$tampildata);
-		$this->load->view('admin/rekapabsen');
+		$this->load->view('admin/rekapabsen',$tampildata);
 		$this->load->view('admin/rekapdetail', $tampildata);
 		$this->load->view('admin/footer');
 	}

@@ -28,9 +28,12 @@
                             <div class="form-group">
                               <label>Tahun</label>
                               <select class="form-control" name="tahun">
-                                <?php 
-                                  $ht=2010;
-                                  while($ht<=2050){
+                                <?php if ($tahun != '') { ?>
+                                  <option><?php echo "$tahun"; ?></option>
+                                <?php } ?>
+                                <?php
+                                  $ht=2017;
+                                  while($ht<=2060){
                                     $to=$ht+1;
                                   if(date("m")>=7){
                                     $e=$ht;
@@ -38,7 +41,7 @@
                                     $e=$to; 
                                   }
                                   if(date("Y")==$e){
-                                    echo "<option selected>$ht-$to</option>"; 
+                                    echo "<option>$ht-$to</option>"; 
                                   }else{
                                     echo "<option>$ht-$to</option>";  
                                     

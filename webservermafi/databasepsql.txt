@@ -113,5 +113,10 @@ FROM presensi as presensi
 LEFT JOIN izin as izin on izin.id_izin=presensi.id_izin
 LEFT JOIN siswa as siswa on siswa.NIS=presensi.NIS;
 
+create view v_presensi as select presensi.id_presensi, siswa.nis, siswa.nama_lengkap, kelas.nama_kelas, presensi.tanggal, presensi.presensi, presensi.masuk, presensi.terlambat, presensi.pulang, presensi.lebih_cepat
+FROM siswa as siswa
+LEFT JOIN kelas as kelas on kelas.id_kelas=siswa.id_kelas
+LEFT JOIN presensi as presensi on presensi.nis=siswa.nis;
+
 
 insert into users (admin,password,level) values ('admin','admin','admin');

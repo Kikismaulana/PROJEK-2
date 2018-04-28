@@ -62,7 +62,7 @@
                           ?>
                           <?php if ($datadetailizin['status'] == "Accepted") { ?>
                             <div class="alert alert-success" role="alert">Perizinan Disetujui <i class="fa fa-check-square-o"></i></div>
-                          <?php } else { ?>
+                          <?php } elseif ($datadetailizin['status'] == "Decline") { ?>
                             <div class="alert alert-danger" role="alert">Perizinan Ditolak <i class="fa fa-window-close-o"></i></div>
                           <?php }  ?>
                           <table id="izin" cellpadding="10px" cellpadding="10px" style="font-size: 15px">
