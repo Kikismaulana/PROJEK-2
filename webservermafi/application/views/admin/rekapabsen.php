@@ -50,6 +50,19 @@
                                 }?>
                               </select>
                             </div>
+                            <div class="form-group">
+                              <label>Kelas</label>
+                              <input type="hidden" name="kelas_new" id="kelas_new">
+                              <select name="id_kelas" class="form-control" required="" id="id_kelas">
+                                <?php foreach ($datakelas as $row) { ?>
+                                  <option value="<?php echo $row['id_kelas']; ?>"> <?php echo $row['nama_kelas']; ?></option>
+                                <?php } if (isset($kelas)) { ?>
+                                  <option selected="" value="<?php echo $id_kelas; ?>"> <?php echo $kelas; ?></option>
+                                <?php } else { ?>
+                                  <option selected="">-- PILIH DATA --</option>
+                                <?php } ?>
+                              </select>
+                            </div>
                             <button type="submit" class="btn btn-info">Submit</button>
                           </form>
                         </div>
@@ -61,3 +74,10 @@
         </div>
       </section>
       <!-- /Conten Header-->
+
+          <script type="text/javascript">
+            $('#id_kelas').change(function(e){
+              //alert($('#jurusan option:selected').text());
+              $('#kelas_new').val($('#id_kelas option:selected').text());
+            });
+          </script>

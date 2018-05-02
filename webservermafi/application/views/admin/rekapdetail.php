@@ -12,19 +12,15 @@
                 <!-- Conten value-->
                 <div class="card-body container-fluid">
                   <div class="form-group">
-                    <div class="form-control col-md-2 text-center">
-                      <h1>
-                        <?php echo "$tahun"; ?>
-                      </h1>
+                    <div class="col-md-5">
+                      <p style="color: #000"><b style="font-size: 25px"><?php echo "$tahun"; ?> | </b> <?php echo "$kelas"; ?></p>
                     </div>
                     <div class="form-control col-md-12">
 
                     <!-- Tahun pertama atau semester 1 -->
                       <div class="card bg-light">
                         <div class="card-body text-center">
-                          <h4>
-                            <?php echo "$tahun1"; ?>
-                          </h4>
+                          <h4> <?php echo "$tahun1"; ?> </h4>
                         </div>
                       </div>
                       <div>
@@ -75,7 +71,7 @@
                           <td class="alert-dark">I</td>
                           <td class="alert-dark">S</td>
                         </tr>
-                        <?php foreach ($presensi as $row) { ?>
+                        <?php foreach ($datasiswa as $row) { ?>
                         <tr>
                           <td>
                             <?php echo $row['nama_lengkap']; ?>
@@ -171,7 +167,7 @@
                           <td class="alert-dark">I</td>
                           <td class="alert-dark">S</td>
                         </tr>
-                        <?php foreach ($presensi as $row) { ?>
+                        <?php foreach ($datasiswa as $row) { ?>
                         <tr>
                           <td>
                             <?php echo $row['nama_lengkap']; ?>

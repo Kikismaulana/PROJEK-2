@@ -14,6 +14,8 @@ class Datapresensi extends CI_Controller {
 		$this->load->model('MIzin');
 		$tampildata['dataizin'] = $this->MIzin->read()->result_array();
 		$tampildata['jumlah'] = $this->MIzin->jumlahizin()->num_rows();
+		$this->load->model('MKelas');
+		$tampildata['datakelas'] = $this->MKelas->read()->result_array();
 		$this->load->view('admin/header',$tampildata);
 		$this->load->view('admin/rekapabsen');
 		$this->load->view('admin/footer');
@@ -22,14 +24,19 @@ class Datapresensi extends CI_Controller {
 	public function rekapdetail()
 	{
 		$tahun = $this->input->post('tahun');
+		$kelas = $this->input->post('id_kelas');
+		$nama_kelas = $this->input->post('kelas_new');
 		$pecah = explode("-", $tahun);
 		$year2=$pecah[0];
 		$year3=$pecah[1];
+		$tampildata['id_kelas'] = $kelas;
+		$tampildata['kelas'] = $nama_kelas;
 		$tampildata['tahun1'] = $year2;
 		$tampildata['tahun2'] = $year3;
 		$tampildata['tahun'] = $tahun;
+		// echo "$kelas";
+		// echo "$nama_kelas";
 		// echo "$year2 - $year3";
-		// $this->load->view('admin/coba',$tampildata);
 		$this->load->model('MUser');
 		$tampildata['dataadmin'] = $this->MUser->readadmin()->result_array();
 		$this->load->model('MIzin');
@@ -42,6 +49,10 @@ class Datapresensi extends CI_Controller {
 		$tampildata['A'] = $this->MPresensi->readjumlahtidakhadir()->num_rows();
 		$tampildata['I'] = $this->MPresensi->readjumlahizin()->num_rows();
 		$tampildata['S'] = $this->MPresensi->readjumlahsakit()->num_rows();
+		$this->load->model('MKelas');
+		$tampildata['datakelas'] = $this->MKelas->read()->result_array();
+		$this->load->model('MSiswa');
+		$tampildata['datasiswa'] = $this->MSiswa->read()->result_array();
 		$this->load->view('admin/header',$tampildata);
 		$this->load->view('admin/rekapabsen',$tampildata);
 		$this->load->view('admin/rekapdetail', $tampildata);
