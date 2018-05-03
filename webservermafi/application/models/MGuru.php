@@ -18,7 +18,8 @@ class MGuru extends CI_Model {
 
 	public function read()
 	{
-		return $this->db->get($this->tabel);
+		return $this->db->order_by("nama_lengkap", "ASC")
+						->get($this->tabel);
 	}
 
 	function update($data, $nip)

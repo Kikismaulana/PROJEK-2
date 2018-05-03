@@ -33,12 +33,12 @@
                         } ?>
                         <!-- /Notifikasi -->
                         <div class="form-group">
-                          <input type="file" name="file" class="form-control"  style="width: 32%">
+                          <input type="file" name="file" class="form-control"  style="width: 31.7%">
                         </div>
                         <div class="form-group">
                           <button class="btn btn-warning text-white">Import data</button>
-                          <button class="btn btn-danger text-white">Get .PDF</button>
-                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Tambah data</button>
+                          <a href="<?php echo base_url('Export/exportdataguru') ?>" class="btn btn-success text-white">Get .xlsx</a>
+                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info">Tambah data</button>
                         </div>
                       </div>
 
@@ -60,14 +60,14 @@
                           ?>
                             <tr>
                                 <td width="5%" align="center"><?php echo $no++; ?></td>
-                                <td align="center"><?php echo $row['nip']; ?></td>
+                                <td align="center"><?php echo $row['NIP']; ?></td>
                                 <td><?php echo $row['nama_lengkap']; ?></td>
                                 <td><?php echo $row['email']; ?></td>
                                 <td align="center"><?php echo $row['no_hp']; ?></td>
                                 <td align="center">
-                                  <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#modal_detail<?php echo $row['nip'];?>">Details</a>
-                                  <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_update<?php echo $row['nip'];?>">Update</button>
-                                  <a data-toggle="modal" data-target="#modal_konfirmasidelete<?php echo $row['nip'];?>" class="btn btn-sm btn-danger text-white">Delete</a>
+                                  <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#modal_detail<?php echo $row['NIP'];?>">Details</a>
+                                  <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_update<?php echo $row['NIP'];?>">Update</button>
+                                  <a data-toggle="modal" data-target="#modal_konfirmasidelete<?php echo $row['NIP'];?>" class="btn btn-sm btn-danger text-white">Delete</a>
                                 </td>
                             </tr>
                           <?php } ?>
@@ -96,7 +96,7 @@
                           <div class="modal-body">
                             <div class="form-group">
                               <label>NIP</label>
-                              <input type="text" name="nip" placeholder="NIP" class="form-control">
+                              <input type="text" name="NIP" placeholder="NIP" class="form-control">
                             </div>
                             <div class="form-group">       
                               <label>Nama</label>
@@ -142,14 +142,14 @@
                   <?php 
                   foreach($data as $row) {
                   ?>
-                  <div class="modal fade" id="modal_konfirmasidelete<?php echo $row['nip'];?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+                  <div class="modal fade" id="modal_konfirmasidelete<?php echo $row['NIP'];?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
                       <div class="modal-dialog">
                       <div class="modal-content">
                       <div class="modal-header">
                           <h3 class="modal-title" id="myModalLabel">Delete Jurusan</h3>
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                       </div>
-                      <form class="form-horizontal" method="post" action="<?php echo base_url('Dataguru/delete/');?><?php echo $row['nip'] ?>">
+                      <form class="form-horizontal" method="post" action="<?php echo base_url('Dataguru/delete/');?><?php echo $row['NIP'] ?>">
                           <div class="modal-body">
 
                               <div class="form-group">
@@ -174,7 +174,7 @@
                   <?php 
                     foreach($data as $row) {
                   ?>
-                  <div id="modal_detail<?php echo $row['nip'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                  <div id="modal_detail<?php echo $row['NIP'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
                     <div role="document" class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -184,7 +184,7 @@
                           <div class="modal-body">
                             <div class="form-group">
                               <label>NIP</label>
-                              <input type="text" name="nip" placeholder="NIP" class="form-control" value="<?php echo $row['nip'] ?>" disabled="">
+                              <input type="text" name="NIP" placeholder="NIP" class="form-control" value="<?php echo $row['NIP'] ?>" disabled="">
                             </div>
                             <div class="form-group">       
                               <label>Nama</label>
@@ -220,18 +220,18 @@
                   <?php 
                     foreach($data as $row) {
                   ?>
-                  <div id="modal_update<?php echo $row['nip'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                  <div id="modal_update<?php echo $row['NIP'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
                     <div role="document" class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 id="exampleModalLabel" class="modal-title">Tambah data guru</h5>
                           <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                         </div>
-                        <form method="POST" action="<?php echo base_url('Dataguru/update/'); ?><?php echo $row['nip'] ?>">
+                        <form method="POST" action="<?php echo base_url('Dataguru/update/'); ?><?php echo $row['NIP'] ?>">
                           <div class="modal-body">
                             <div class="form-group">
                               <label>NIP</label>
-                              <input type="text" name="nip" placeholder="NIP" class="form-control" value="<?php echo $row['nip'] ?>" required="">
+                              <input type="text" name="NIP" placeholder="NIP" class="form-control" value="<?php echo $row['NIP'] ?>" required="">
                             </div>
                             <div class="form-group">       
                               <label>Nama</label>

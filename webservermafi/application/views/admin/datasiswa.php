@@ -31,12 +31,12 @@
                         } ?>
                         <!-- /Notifikasi -->
                         <div class="form-group">
-                          <input type="file" name="file" class="form-control"  style="width: 32%">
+                          <input type="file" name="file" class="form-control"  style="width: 31.7%">
                         </div>
                         <div class="form-group">
                           <button class="btn btn-warning text-white">Import data</button>
-                          <button class="btn btn-danger text-white">Get .PDF</button>
-                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Tambah data</button>
+                          <a href="<?php echo base_url('Export/exportdatasiswa') ?>" class="btn btn-success text-white">Get .xlsx</a>
+                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info">Tambah data</button>
                         </div>
                       </div>
                       <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">

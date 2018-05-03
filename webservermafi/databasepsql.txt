@@ -1,33 +1,23 @@
-create sequence id_jurusan;
-create sequence id_kelas;
-create sequence id_users;
-create sequence id_presensi;
-create sequence id_izin;
-
 create table jurusan (
-id_jurusan int not null PRIMARY KEY DEFAULT NEXTVAL('id_jurusan'),
-nama_jurusan varchar (50));
-create sequence id_jurusan;
-create sequence id_kelas;
-create sequence id_users;
-create sequence id_presensi;
-create sequence id_izin;
-
-create table jurusan (
-id_jurusan int not null PRIMARY KEY DEFAULT NEXTVAL('id_jurusan'),
-nama_jurusan varchar (50));
+id_jurusan int not null AUTO_INCREMENT,
+nama_jurusan varchar (50),
+PRIMARY KEY (id_jurusan)
+);
 
 
 create table kelas (
-id_kelas int not null PRIMARY KEY DEFAULT NEXTVAL('id_kelas'),
-id_jurusan int not null REFERENCES jurusan (id_jurusan) ON DELETE CASCADE ON UPDATE CASCADE,
-nama_kelas varchar (50));
+id_kelas int not null AUTO_INCREMENT,
+id_jurusan int not null,
+nama_kelas varchar (50),
+PRIMARY KEY(id_kelas),
+FOREIGN KEY (id_jurusan) REFERENCES jurusan (id_jurusan)
+ON DELETE CASCADE ON UPDATE CASCADE);
 
 
 create table siswa (
-NIS int not null PRIMARY KEY,
+NIS int not null,
 NISN int,
-id_kelas int not null REFERENCES kelas (id_kelas) ON DELETE CASCADE ON UPDATE CASCADE,
+id_kelas int not null,
 nama_lengkap varchar (50),
 jk varchar (9),
 ttl varchar (50),
@@ -39,7 +29,11 @@ nama_ayah varchar (50),
 nama_ibu varchar (50),
 pekerjaan_ayah varchar (50),
 pekerjaan_ibu varchar (50),
-alamat_ortu text);
+alamat_ortu text,
+PRIMARY KEY (NIS),
+FOREIGN KEY (id_kelas) REFERENCES kelas (id_kelas)
+ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 create table guru (
 NIP int not null,
@@ -52,35 +46,44 @@ PRIMARY KEY (NIP)
 );
 
 create table users (
-id_users int not null PRIMARY KEY DEFAULT NEXTVAL ('id_users'),
-NIS int REFERENCES siswa (NIS) ON DELETE CASCADE ON UPDATE CASCADE,
-NIP int REFERENCES guru (NIP) ON DELETE CASCADE ON UPDATE CASCADE,
+id_users int not null AUTO_INCREMENT,
+NIS int,
+NIP int,
 NISN int,
 admin varchar (50),
 password varchar (50),
-level varchar (10)
+level varchar (10),
+PRIMARY KEY (id_users),
+FOREIGN KEY (NIS) REFERENCES siswa (NIS),
+FOREIGN KEY (NIP) REFERENCES guru (NIP)
+ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 create table izin (
-id_izin int not null PRIMARY KEY DEFAULT NEXTVAL ('id_izin'),
+id_izin int not null,
 alasan text,
 tanggal_mulai date,
 tanggal_selesai date,
 keterangan varchar (20),
 bukti varchar(50),
-status varchar (10)
+status varchar (10),
+PRIMARY KEY (id_izin)
 );
 
 create table presensi (
-id_presensi int not null PRIMARY KEY DEFAULT NEXTVAL('id_presensi'),
-id_izin int REFERENCES izin (id_izin) ON DELETE CASCADE ON UPDATE CASCADE,
-NIS int not null REFERENCES siswa (NIS) ON DELETE CASCADE ON UPDATE CASCADE,
+id_presensi int not null,
+id_izin int,
+NIS int not null,
 tanggal date,
 presensi varchar (20),
 pulang time,
 lebih_cepat int,
 masuk time,
-terlambat int
+terlambat int,
+PRIMARY KEY (id_presensi),
+FOREIGN KEY (id_izin) REFERENCES izin (id_izin),
+FOREIGN KEY (NIS) REFERENCES siswa (NIS)
+ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 create view v_userortu as select siswa.nis, siswa.nisn, users.password, users.level, siswa.nama_lengkap, siswa.id_kelas, kelas.nama_kelas, siswa.jk, siswa.ttl, siswa.email, siswa.agama, siswa.alamat, siswa.no_hp, siswa.nama_ayah, siswa.nama_ibu, siswa.pekerjaan_ayah, siswa.pekerjaan_ibu, siswa.alamat_ortu

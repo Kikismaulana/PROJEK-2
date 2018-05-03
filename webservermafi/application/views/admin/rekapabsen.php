@@ -24,7 +24,7 @@
                   <div class="form-group">
                         <input type="hidden" name="module" value="laporan">
                         <div class="col-lg-4">
-                          <form method="post" action="<?php echo base_url('Datapresensi/rekapdetail') ?>">
+                          <form method="get" action="<?php echo base_url('Datapresensi/rekapdetail') ?>">
                             <div class="form-group">
                               <label>Tahun</label>
                               <select class="form-control" name="tahun">

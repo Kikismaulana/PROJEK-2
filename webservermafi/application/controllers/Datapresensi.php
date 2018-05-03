@@ -23,9 +23,9 @@ class Datapresensi extends CI_Controller {
 
 	public function rekapdetail()
 	{
-		$tahun = $this->input->post('tahun');
-		$kelas = $this->input->post('id_kelas');
-		$nama_kelas = $this->input->post('kelas_new');
+		$tahun = $this->input->get('tahun');
+		$kelas = $this->input->get('id_kelas');
+		$nama_kelas = $this->input->get('kelas_new');
 		$pecah = explode("-", $tahun);
 		$year2=$pecah[0];
 		$year3=$pecah[1];

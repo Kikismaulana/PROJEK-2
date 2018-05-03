@@ -18,7 +18,8 @@ class MSiswa extends CI_Model {
 
 	public function read()
 	{
-		return $this->db->get($this->tabel);
+		return $this->db->order_by("nama_kelas", "ASC")
+						->get($this->tabel);
 	}
 
 	function update($data, $nis)
