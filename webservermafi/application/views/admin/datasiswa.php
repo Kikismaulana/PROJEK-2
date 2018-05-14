@@ -30,14 +30,16 @@
                           echo $info;
                         } ?>
                         <!-- /Notifikasi -->
-                        <div class="form-group">
-                          <input type="file" name="file" class="form-control"  style="width: 31.7%">
-                        </div>
-                        <div class="form-group">
-                          <button class="btn btn-warning text-white">Import data</button>
-                          <a href="<?php echo base_url('Export/exportdatasiswa') ?>" class="btn btn-success text-white">Get .xlsx</a>
-                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info">Tambah data</button>
-                        </div>
+                        <form method="post" action="<?php echo base_url("Importdata/form"); ?>" enctype="multipart/form-data">
+                          <div class="form-group">
+                            <input type="file" name="file" class="form-control"  style="width: 29.4%">
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" name="preview" value="Preview" class="btn btn-outline-warning">
+                            <a href="<?php echo base_url('Export/exportdatasiswa') ?>" class="btn btn-success text-white">Get .xlsx</a>
+                            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info">Tambah data</button>
+                          </div>
+                        </form>
                       </div>
                       <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                           <thead>
@@ -45,8 +47,7 @@
                                   <th width="5%">No.</th>
                                   <th>NIS</th>
                                   <th width="20%">Nama lengkap</th>
-                                  <th>Email</th>
-                                  <th>Nomor Hp</th>
+                                  <th>Kelas</th>
                                   <th width="40%">Aksi</th>
                               </tr>
                           </thead>
@@ -59,8 +60,7 @@
                                   <td align="center"><?php echo $no++; ?></td>
                                   <td align="center"><?php echo $row['nis']; ?></td>
                                   <td><?php echo $row['nama_lengkap']; ?></td>
-                                  <td><?php echo $row['email']; ?></td>
-                                  <td><?php echo $row['no_hp']; ?></td>
+                                  <td><?php echo $row['nama_kelas']; ?></td>
                                   <td align="center">
                                     <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#modal_detail<?php echo $row['nis'];?>">Details</a>
                                   <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_update<?php echo $row['nis'];?>">Update</button>

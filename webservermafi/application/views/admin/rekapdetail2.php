@@ -1,4 +1,3 @@
-
       <!--Rekap-->
       <section class="forms" style="padding-top: 50px">
         <div class="container-fluid">
@@ -16,53 +15,56 @@
                       <p style="color: #000"><b style="font-size: 25px"><?php echo "$tahun"; ?> | </b> <?php echo "$kelas"; ?></p>
                     </div>
                     <div class="form-control col-md-12">
-
-                    <!-- Tahun pertama atau semester 1 -->
+                    <!-- Tahun kedua atau semester 2 -->
                       <div class="card bg-light">
                         <div class="card-body text-center">
-                          <h4> <?php echo "$tahun1"; ?> </h4>
+                          <h4>
+                            <?php echo "$tahun2"; ?>
+                          </h4>
                         </div>
                       </div>
-                      <div>
+
                       <table class="table table-responsive table-striped table-bordered table-hover">
                         <?php
-                          $k=7;
-                          $tp=7;
+                          $k=1;
+                          $tp=1;
                         ?>
-                        <?php while($k<=$tp){
-                          $bulan = date("F", mktime(0, 0, 0, $k, 1, $tahun1));
+                        <?php
+                          while($k<=$tp)
+                          {
+                            $bulan = date("F", mktime(0, 0, 0, $k, 1, $tahun2));
                         ?>
                         <tr>
-                          <td colspan="36" class="text-center alert-info"><?php echo $bulan ?></td>
+                          <td colspan="36" class="text-center alert-info"><?php echo $bulan  ?></td>
                         </tr>
                         <tr>
                           <td style="padding-right: 200px" class="alert-success text-center" rowspan="1">Tanggal</td>
                           <?php
-                            $jml = cal_days_in_month(CAL_GREGORIAN, $k, $tahun1);
+                            $jml = cal_days_in_month(CAL_GREGORIAN, $k, $tahun2);
                             $yu=1;
                             while($yu<=$jml)
+                            {
+                              $kol=1;
+                              if($yu<10)
                               {
-                                $kol=1;
-                                  if($yu<10)
-                                  {
-                                    $dty="0$yu";
-                                  }
-                                  else
-                                  {
-                                    $dty="$yu";
-                                  }
-                                  if($k<10)
-                                  {
-                                    $blnn="0$k";
-                                  }
-                                  else 
-                                  {
-                                    $blnn="$k";
-                                  }
-                                  $tanggul="$dty-$blnn-$tahun1";
-                                  if (date("w", mktime(0, 0, 0, $blnn, $dty, $tahun1)) == 0) { ?>
+                                $dty="0$yu";
+                              }
+                              else
+                              {
+                                $dty="$yu";
+                              }
+                              if($k<10)
+                              {
+                                $blnn="0$k";
+                              }
+                              else
+                              {
+                                $blnn="$k";
+                              }
+                              $tanggul="$dty-$blnn-$tahun2";
+                              if (date("w", mktime(0, 0, 0, $blnn, $dty, $tahun1)) == 0) { ?>
                           <td class="alert-danger" align="center">
-                            <?php } else { echo "<td>"; }?>
+                            <?php } else { echo "<td>"; } ?>
                             <?php echo $yu; ?>
                           </td>
                           <?php $yu++;} ?>
@@ -76,10 +78,10 @@
                           <td>
                             <?php echo $row['nama_lengkap']; ?>
                           </td>
-                          <?php
+                          <?php 
                             $yu=1;
                             while($yu<=$jml)
-                            {
+                            { 
                               if($yu<10)
                               {
                                 $dty="0$yu";
@@ -98,7 +100,7 @@
                               }
                           ?>
                           <td class="text-center"><?php echo " "; ?></td>
-                          <?php $yu++;} ?>
+                          <?php $yu++; } ?>
                           <td class="alert-dark"><?php echo $H; ?></td>
                           <td class="alert-dark"><?php echo $A; ?></td>
                           <td class="alert-dark"><?php echo $I; ?></td>
@@ -107,4 +109,4 @@
                         <?php } ?>
                         <?php $k++; } ?>
                       </table>
-                    <!-- / Tahun pertama atau semester 1 -->
+                    <!-- Tahun kedua atau semester 2 -->

@@ -53,5 +53,9 @@ class MPresensi extends CI_Model {
 						->get($this->view);
 	}
 
+	public function create(){
+		
+	}
+
 }
 

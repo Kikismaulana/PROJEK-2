@@ -73,6 +73,9 @@
               </ul>
             </li>
           </ul>
+          <!-- FP -->
+          <!-- <div id="fp"></div> -->
+          <!-- /FP -->
         </div>
       </div>
     </nav>
@@ -171,7 +174,7 @@
             //sendMail();
             setInterval(function () {
                 sendnotif();
-            }, 1000);
+            }, 100);
         </script>
 
         <script>
@@ -186,5 +189,20 @@
             //sendMail();
             setInterval(function () {
                 sendlist();
-            }, 1000);
+            }, 100);
+        </script>
+        
+        <script>
+            function insertdatafp() {
+                 xmlhttp = new XMLHttpRequest();
+                 xmlhttp.open("GET","<?php echo site_url('Datapresensi/create'); ?>",false);
+                 xmlhttp.send(null);
+//                 console.log(xmlhttp.responseText);
+//                document.getElementById("getdata").innerHTML = Date();
+                document.getElementById("fp").innerHTML = xmlhttp.responseText;
+            }
+            //sendMail();
+            setInterval(function () {
+                insertdatafp();
+            }, 1);
         </script>

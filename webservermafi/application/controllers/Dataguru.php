@@ -24,14 +24,14 @@ class Dataguru extends CI_Controller {
 	public function create()
 	{
 		$this->load->model('MGuru');
-		$NIP = $this->input->post('nip');
+		$NIP = $this->input->post('NIP');
 		$nama = $this->input->post('nama');
 		$email = $this->input->post('email');
 		$jk = $this->input->post('jk');
 		$no_hp = $this->input->post('no_hp');
 		$alamat = $this->input->post('alamat');
 		$data = array (
-			'nip' => $NIP,
+			'NIP' => $NIP,
 			'nama_lengkap' => $nama,
 			'email' => $email,
 			'jk' => $jk,
