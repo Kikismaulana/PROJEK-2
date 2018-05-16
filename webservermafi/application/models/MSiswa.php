@@ -16,7 +16,13 @@ class MSiswa extends CI_Model {
 		return $this->db->insert('siswa', $data);
 	}
 
-	public function read($kelas)
+	public function read()
+	{
+		return $this->db->order_by("nama_kelas", "ASC")
+						->get($this->tabel);
+	}
+
+	public function readrekap($kelas)
 	{
 		return $this->db->order_by("nama_kelas", "ASC")
 						->where('id_kelas = ', $kelas)
