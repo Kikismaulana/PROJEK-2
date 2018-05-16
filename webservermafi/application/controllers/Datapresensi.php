@@ -53,7 +53,7 @@ class Datapresensi extends CI_Controller {
 		$this->load->model('MKelas');
 		$tampildata['datakelas'] = $this->MKelas->read()->result_array();
 		$this->load->model('MSiswa');
-		$tampildata['datasiswa'] = $this->MSiswa->read()->result_array();
+		$tampildata['datasiswa'] = $this->MSiswa->read($kelas)->result_array();
 		$this->load->view('admin/header',$tampildata);
 		$this->load->view('admin/rekapabsen',$tampildata);
 		// $this->load->view('admin/rekapdetail', $tampildata);
