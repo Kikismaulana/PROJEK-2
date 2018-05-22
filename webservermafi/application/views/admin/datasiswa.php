@@ -30,7 +30,7 @@
                           echo $info;
                         } ?>
                         <!-- /Notifikasi -->
-                        <form method="post" action="<?php echo base_url("Importdata/form"); ?>" enctype="multipart/form-data">
+                        <form method="post" action="<?php echo base_url("Importdatasiswa/form"); ?>" enctype="multipart/form-data">
                           <div class="form-group">
                             <input type="file" name="file" class="form-control"  style="width: 29.4%">
                           </div>

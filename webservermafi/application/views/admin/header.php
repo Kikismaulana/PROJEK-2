@@ -48,7 +48,7 @@
             <h2 class="h5">ADMIN</h2><span>SMK N 1 INDRAMAYU</span>
           </div>
           <!-- Small Brand information, appears on minimized sidebar-->
-          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>4</strong><strong class="text-primary">7</strong></a></div>
+          <div class="sidenav-header-logo"><a href="Dashboard" class="brand-small text-center"> <strong>4</strong><strong class="text-primary">7</strong></a></div>
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
@@ -85,7 +85,7 @@
         <nav class="navbar">
           <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
-              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.html" class="navbar-brand">
+              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="Dashboard" class="navbar-brand">
                 <div class="brand-text d-none d-md-inline-block"><span>Dashboard </span><strong class="text-primary"> M-AFI</strong></div></a></div>
                 <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                   <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
@@ -165,7 +165,7 @@
         <script>
             function sendnotif() {
                  xmlhttp = new XMLHttpRequest();
-                 xmlhttp.open("GET","<?php echo site_url('Ajax/notif'); ?>",false);
+                 xmlhttp.open("GET","<?php echo site_url('Datapresensi/notif'); ?>",false);
                  xmlhttp.send(null);
 //                 console.log(xmlhttp.responseText);
 //                document.getElementById("getdata").innerHTML = Date();
@@ -174,13 +174,13 @@
             //sendMail();
             setInterval(function () {
                 sendnotif();
-            }, 100);
+            }, 1000);
         </script>
 
         <script>
             function sendlist() {
                  xmlhttp = new XMLHttpRequest();
-                 xmlhttp.open("GET","<?php echo site_url('Ajax/list'); ?>",false);
+                 xmlhttp.open("GET","<?php echo site_url('Datapresensi/list'); ?>",false);
                  xmlhttp.send(null);
 //                 console.log(xmlhttp.responseText);
 //                document.getElementById("getdata").innerHTML = Date();
@@ -189,10 +189,10 @@
             //sendMail();
             setInterval(function () {
                 sendlist();
-            }, 100);
+            }, 1000);
         </script>
         
-        <script>
+        <!-- <script>
             function insertdatafp() {
                  xmlhttp = new XMLHttpRequest();
                  xmlhttp.open("GET","<?php echo site_url('Datapresensi/create'); ?>",false);
@@ -205,4 +205,4 @@
             setInterval(function () {
                 insertdatafp();
             }, 1);
-        </script>
+        </script> -->

@@ -19,10 +19,10 @@ class Export extends CI_Controller {
     // Settingan awal fil excel
     $excel->getProperties()->setCreator('M-AFI TEAM')
                  ->setLastModifiedBy('M-AFI TEAM')
-                 ->setTitle("Data guru")
-                 ->setSubject("guru")
-                 ->setDescription("Laporan Semua Data guru")
-                 ->setKeywords("Data guru");
+                 ->setTitle("Data Siswa")
+                 ->setSubject("siswa")
+                 ->setDescription("Data Siswa")
+                 ->setKeywords("Data Siswa");
     // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
     $style_col = array(
       'font' => array('bold' => true), // Set font nya jadi bold
@@ -49,7 +49,7 @@ class Export extends CI_Controller {
         'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
       )
     );
-    $excel->setActiveSheetIndex(0)->setCellValue('A1', "DATA guru"); // Set kolom A1 dengan tulisan "DATA guru"
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "Data Siswa"); // Set kolom A1 dengan tulisan "DATA guru"
     $excel->getActiveSheet()->mergeCells('A1:P1'); // Set Merge Cell pada kolom A1 sampai E1
     $excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE); // Set bold kolom A1
     $excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); // Set font size 15 untuk kolom A1
@@ -155,11 +155,11 @@ class Export extends CI_Controller {
     // Set orientasi kertas jadi LANDSCAPE
     $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
     // Set judul file excel nya
-    $excel->getActiveSheet(0)->setTitle("Laporan Data guru");
+    $excel->getActiveSheet(0)->setTitle("Laporan Data Siswa");
     $excel->setActiveSheetIndex(0);
     // Proses file excel
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment; filename="Data guru.xlsx"'); // Set nama file excel nya
+    header('Content-Disposition: attachment; filename="Data Siswa.xlsx"'); // Set nama file excel nya
     header('Cache-Control: max-age=0');
     $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
     $write->save('php://output');
@@ -176,7 +176,7 @@ class Export extends CI_Controller {
                  ->setLastModifiedBy('M-AFI TEAM')
                  ->setTitle("Data Guru")
                  ->setSubject("Guru")
-                 ->setDescription("Laporan Semua Data Guru")
+                 ->setDescription("Data Guru")
                  ->setKeywords("Data Guru");
     // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
     $style_col = array(

@@ -21,9 +21,8 @@ class MIzin extends CI_Model {
 	public function jumlahizin()
 	{
 		$null = '0';
-		return $this->db->where('id_izin != ')
-				->where('status = ',$null)
-				->get($this->tabel2);	
+		return $this->db->where('status = ',$null)
+				->get($this->tabel);
 	}
 
 	function updatestatusbaca($data, $id_izin)

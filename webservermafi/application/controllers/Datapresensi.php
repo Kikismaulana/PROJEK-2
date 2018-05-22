@@ -26,15 +26,17 @@ class Datapresensi extends CI_Controller {
 		$tahun = $this->input->get('tahun');
 		$kelas = $this->input->get('id_kelas');
 		$nama_kelas = $this->input->get('kelas_new');
+		$ambil = $this->input->get('ambil');
+		$bulan = $this->input->get('bulan');
 		$pecah = explode("-", $tahun);
 		$year2=$pecah[0];
 		$year3=$pecah[1];
 		$tampildata['id_kelas'] = $kelas;
 		$tampildata['kelas'] = $nama_kelas;
+		$tampildata['ambil'] = $ambil;
 		$tampildata['tahun1'] = $year2;
 		$tampildata['tahun2'] = $year3;
 		$tampildata['tahun'] = $tahun;
-		$ambil = $this->input->get('ambil');
 		// echo "$kelas";
 		// echo "$nama_kelas";
 		// echo "$year2 - $year3";
@@ -58,11 +60,35 @@ class Datapresensi extends CI_Controller {
 		$this->load->view('admin/rekapabsen',$tampildata);
 		// $this->load->view('admin/rekapdetail', $tampildata);
 		if (($ambil == $year2)||($ambil == null)) {
-			$this->load->view('admin/rekapdetail', $tampildata);
+			if ($bulan == 7 || $bulan == null) {
+				$this->load->view('admin/rekapdetailtahun1bulan1', $tampildata);
+			} elseif ($bulan == 8) {
+				$this->load->view('admin/rekapdetailtahun1bulan2', $tampildata);
+			} elseif ($bulan == 9) {
+				$this->load->view('admin/rekapdetailtahun1bulan3', $tampildata);
+			} elseif ($bulan == 10) {
+				$this->load->view('admin/rekapdetailtahun1bulan4', $tampildata);
+			} elseif ($bulan == 11) {
+				$this->load->view('admin/rekapdetailtahun1bulan5', $tampildata);
+			} elseif ($bulan == 12) {
+				$this->load->view('admin/rekapdetailtahun1bulan6', $tampildata);
+			}
 		} elseif($ambil == $year3) {
-			$this->load->view('admin/rekapdetail2', $tampildata);
+			if ($bulan == 1 || $bulan == null) {
+				$this->load->view('admin/rekapdetailtahun2bulan1', $tampildata);
+			} elseif ($bulan == 2) {
+				$this->load->view('admin/rekapdetailtahun2bulan2', $tampildata);
+			} elseif ($bulan == 3) {
+				$this->load->view('admin/rekapdetailtahun2bulan3', $tampildata);
+			} elseif ($bulan == 4) {
+				$this->load->view('admin/rekapdetailtahun2bulan4', $tampildata);
+			} elseif ($bulan == 5) {
+				$this->load->view('admin/rekapdetailtahun2bulan5', $tampildata);
+			} elseif ($bulan == 6) {
+				$this->load->view('admin/rekapdetailtahun2bulan6', $tampildata);
+			}
 		}
-		$this->load->view('admin/pagingtahun', $tampildata);
+		$this->load->view('admin/paging', $tampildata);
 		$this->load->view('admin/keteranganrekapdetail', $tampildata);
 		$this->load->view('admin/footer');
 	}
@@ -258,6 +284,20 @@ class Datapresensi extends CI_Controller {
 		}
 		return redirect('Datapresensi/readdetailizinsiswa/'.$id_izin);
 	}
+
+	public function notif()
+    {
+        $this->load->model('MIzin');
+        $tampildata['jumlah'] = $this->MIzin->jumlahizin()->num_rows();
+        $this->load->view('Admin/notif.php',$tampildata);
+    }
+
+    public function list()
+    {
+        $this->load->model('MIzin');
+        $tampildata['dataizin'] = $this->MIzin->read()->result_array();
+        $this->load->view('Admin/listizin.php',$tampildata);
+    }
 
 	// public function delete()
 	// {

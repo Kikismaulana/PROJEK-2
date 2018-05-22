@@ -2,10 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MImportdata extends CI_Model {
-	public function view(){
+	
+	public function viewdatasiswa(){
 		return $this->db->get('siswa')->result(); // Tampilkan semua data yang ada di tabel siswa
 	}
 	
+	public function viewdataguru(){
+		return $this->db->get('guru')->result(); // Tampilkan semua data yang ada di tabel siswa
+	}
+
 	// Fungsi untuk melakukan proses upload file
 	public function upload_file($filename){
 		$this->load->library('upload'); // Load librari upload
@@ -29,7 +34,12 @@ class MImportdata extends CI_Model {
 	}
 	
 	// Buat sebuah fungsi untuk melakukan insert lebih dari 1 data
-	public function insert_multiple($data){
+	public function insert_multiple_siswa($data){
 		$this->db->insert_batch('siswa', $data);
+	}
+
+	// Buat sebuah fungsi untuk melakukan insert lebih dari 1 data
+	public function insert_multiple_guru($data){
+		$this->db->insert_batch('guru', $data);
 	}
 }
