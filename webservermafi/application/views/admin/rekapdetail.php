@@ -251,9 +251,19 @@
                                 $blnn="$pilihanbulan";
                               }
                               $tanggal="$ambil-$blnn-$dty";
+                              // TERPAKSA NATIVE KARENA AGAK RUMIT
                               $con = mysqli_connect('localhost','root','','mafi');
-                              $sqla=mysqli_query($con,"select * from presensi where tanggal='$tanggal'");
+                              $sqla = mysqli_query($con,"SELECT * FROM presensi where nis='$row[nis]' AND tanggal='$tanggal'");
                               $isiabsen=mysqli_fetch_array($sqla);
+                              $jumlahsakit = mysqli_query($con,"SELECT * FROM presensi where nis='$row[nis]' AND presensi='Sakit'");
+                              $sqls = mysqli_num_rows($jumlahsakit);
+                              $jumlahizin = mysqli_query($con,"SELECT * FROM presensi where nis='$row[nis]' AND presensi='Izin'");
+                              $sqli = mysqli_num_rows($jumlahizin);
+                              $jumlahhadir = mysqli_query($con,"SELECT * FROM presensi where nis='$row[nis]' AND presensi='Hadir'");
+                              $sqlh = mysqli_num_rows($jumlahhadir);
+                              $jumlahtidakhadir = mysqli_query($con,"SELECT * FROM presensi where nis='$row[nis]' AND presensi='Tidak Hadir'");
+                              $sqlth = mysqli_num_rows($jumlahtidakhadir);
+                              // TERPAKSA NATIVE KARENA AGAK RUMIT
                           ?>
                           <td class="text-center">
                             <?php
@@ -269,10 +279,10 @@
                             ?>
                           </td>
                           <?php $yu++;} ?>
-                          <td class="alert-dark"><?php echo $H; ?></td>
-                          <td class="alert-dark"><?php echo $A; ?></td>
-                          <td class="alert-dark"><?php echo $I; ?></td>
-                          <td class="alert-dark"><?php echo $S; ?></td>
+                          <td class="alert-dark"><?php echo $sqlh; ?></td>
+                          <td class="alert-dark"><?php echo $sqlth; ?></td>
+                          <td class="alert-dark"><?php echo $sqli; ?></td>
+                          <td class="alert-dark"><?php echo $sqls; ?></td>
                         </tr>
                         <?php } ?>
                       </table>

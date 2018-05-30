@@ -64,3 +64,9 @@
           </div>
         </div>
       </section>
+
+      <div class="col-md-12">
+        <div class="text-center">
+          <a target="_blank" class="btn btn-success" href="<?php echo base_url('Datapresensi/modeabsensi') ?>"><b>NYALAKAN MODE ABSENSI !</b></a>
+        </div>
+      </div>

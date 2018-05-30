@@ -258,7 +258,7 @@
 
                                 <div class="form-group">
                                   <label>NISN</label>
-                                  <input class="form-control" type="text" value="<?php echo $row['nisn'] ?>" name="nisN" placeholder="NISN" class="form-control" required="" disabled="">
+                                  <input class="form-control" type="text" value="<?php echo $row['nisn'] ?>" name="NISN" placeholder="NISN" class="form-control" required="" disabled="">
                                 </div>
 
                                 <div class="form-group">
@@ -353,6 +353,15 @@
                                   <input class="form-control" type="text" value="<?php echo $row['nis'] ?>" name="nis" placeholder="NIS" class="form-control" required="">
                                 </div>
 
+                                <div class="form-group">
+                                  <label>Kelas</label>
+                                  <select class="form-control" name="id_kelas">
+                                    <option value="<?php echo $row['id_kelas'] ?>"><?php echo $row['nama_kelas'] ?></option>
+                                    <?php foreach ($datakelas as $id) { ?>
+                                      <option value="<?php echo $id['id_kelas']; ?>"> <?php echo $id['nama_kelas']; ?></option>
+                                      <?php } ?>
+                                  </select>
+                                </div>
                                 
                                 <div class="form-group">       
                                   <label>Jenis Kelamin</label>
